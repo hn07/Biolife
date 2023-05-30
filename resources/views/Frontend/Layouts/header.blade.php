@@ -1,5 +1,5 @@
 <!-- Preloader -->
-<div id="biof-loading">
+{{-- <div id="biof-loading">
     <div class="biof-loading-center">
         <div class="biof-loading-center-absolute">
             <div class="dot dot-one"></div>
@@ -7,7 +7,7 @@
             <div class="dot dot-three"></div>
         </div>
     </div>
-</div>
+</div> --}}
 
 <!-- HEADER -->
 <header id="header" class="header-area style-01 layout-03">
@@ -36,8 +36,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-2 col-md-6 col-xs-6">
-                    <a href="index-2.html" class="biolife-logo"><img src="assets/images/organic-3.png"
-                            alt="biolife logo" width="135" height="34"></a>
+                    <a href="index-2.html" class="biolife-logo"><img
+                            src="{{ URL::asset('frontend/assets/images/organic-3.png') }}" alt="biolife logo"
+                            width="135" height="34"></a>
                 </div>
                 <div class="col-lg-6 col-md-7 hidden-sm hidden-xs">
                     <div class="primary-menu">
@@ -134,7 +135,7 @@
                                     <li class="menu-item"><a href="#">Seasonal Fruit Plate</a></li>
                                 </ul>
                             </li>
-                            
+
                             <li class="menu-item menu-item-has-children has-megamenu">
                                 <a href="#" class="menu-name" data-title="Blog">Blog</a>
                                 <div class="wrap-megamenu lg-width-800 md-width-750">
@@ -173,8 +174,8 @@
                                                 <ul class="posts">
                                                     <li>
                                                         <div class="block-post-item">
-                                                            <div class="thumb"><a href="#"><img
-                                                                        src="assets/images/megamenu/thumb-05.jpg"
+                                                            <div class="thumb"><a href="#">
+                                                                    <img src="{{ URL::asset('frontend/assets/images/megamenu/thumb-05.jpg') }}"
                                                                         width="100" height="73"
                                                                         alt=""></a></div>
                                                             <div class="left-info">
@@ -187,8 +188,8 @@
                                                     </li>
                                                     <li>
                                                         <div class="block-post-item">
-                                                            <div class="thumb"><a href="#"><img
-                                                                        src="assets/images/megamenu/thumb-06.jpg"
+                                                            <div class="thumb"><a href="#">
+                                                                    <img src="{{ URL::asset('frontend/assets/images/megamenu/thumb-06.jpg') }}"
                                                                         width="100" height="73"
                                                                         alt=""></a></div>
                                                             <div class="left-info">
@@ -201,8 +202,8 @@
                                                     </li>
                                                     <li>
                                                         <div class="block-post-item">
-                                                            <div class="thumb"><a href="#"><img
-                                                                        src="assets/images/megamenu/thumb-07.jpg"
+                                                            <div class="thumb"><a href="#">
+                                                                    <img src="{{ URL::asset('frontend/assets/images/megamenu/thumb-06.jpg') }}"
                                                                         width="100" height="73"
                                                                         alt=""></a></div>
                                                             <div class="left-info">
@@ -250,7 +251,7 @@
                                 </form>
                             </div>
                         </div>
-                        
+
                         <div class="minicart-block">
                             <div class="minicart-contain">
                                 <a href="javascript:void(0)" class="link-to">
@@ -267,7 +268,8 @@
                                             <li>
                                                 <div class="minicart-item">
                                                     <div class="thumb">
-                                                        <a href="#"><img src="assets/images/minicart/pr-01.jpg"
+                                                        <a href="#">
+                                                            <img src="{{ URL::asset('frontend/assets/images/minicart/pr-01.jpg') }}"
                                                                 width="90" height="90"
                                                                 alt="National Fresh"></a>
                                                     </div>
@@ -298,7 +300,8 @@
                                             <li>
                                                 <div class="minicart-item">
                                                     <div class="thumb">
-                                                        <a href="#"><img src="assets/images/minicart/pr-02.jpg"
+                                                        <a href="#">
+                                                            <img src="{{ URL::asset('frontend/assets/images/minicart/pr-02.jpg') }}"
                                                                 width="90" height="90"
                                                                 alt="National Fresh"></a>
                                                     </div>
@@ -329,7 +332,8 @@
                                             <li>
                                                 <div class="minicart-item">
                                                     <div class="thumb">
-                                                        <a href="#"><img src="assets/images/minicart/pr-03.jpg"
+                                                        <a href="#">
+                                                            <img src="{{ URL::asset('frontend/assets/images/minicart/pr-03.jpg') }}"
                                                                 width="90" height="90"
                                                                 alt="National Fresh"></a>
                                                     </div>
@@ -360,7 +364,8 @@
                                             <li>
                                                 <div class="minicart-item">
                                                     <div class="thumb">
-                                                        <a href="#"><img src="assets/images/minicart/pr-04.jpg"
+                                                        <a href="#">
+                                                            <img src="{{ URL::asset('frontend/assets/images/minicart/pr-04.jpg') }}"
                                                                 width="90" height="90"
                                                                 alt="National Fresh"></a>
                                                     </div>
@@ -391,9 +396,8 @@
                                             <li>
                                                 <div class="minicart-item">
                                                     <div class="thumb">
-                                                        <a href="#"><img src="assets/images/minicart/pr-05.jpg"
-                                                                width="90" height="90"
-                                                                alt="National Fresh"></a>
+                                                        <img src="{{ URL::asset('frontend/assets/images/minicart/pr-05.jpg') }}"
+                                                            width="90" height="90" alt="National Fresh"></a>
                                                     </div>
                                                     <div class="left-info">
                                                         <div class="product-title"><a href="#"
@@ -507,7 +511,8 @@
                                                                 <div class="contain-product none-overlay">
                                                                     <div class="product-thumb">
                                                                         <a href="#" class="link-to-product">
-                                                                            <img src="assets/images/products/p-08.jpg"
+
+                                                                            <img src="{{ URL::asset('frontend/assets/images/products/p-08.jpg') }}"
                                                                                 alt="dd" width="270"
                                                                                 height="270"
                                                                                 class="product-thumnail">
@@ -531,7 +536,7 @@
                                                                 <div class="contain-product none-overlay">
                                                                     <div class="product-thumb">
                                                                         <a href="#" class="link-to-product">
-                                                                            <img src="assets/images/products/p-11.jpg"
+                                                                            <img src="{{ URL::asset('frontend/assets/images/products/p-11.jpg') }}"
                                                                                 alt="dd" width="270"
                                                                                 height="270"
                                                                                 class="product-thumnail">
@@ -555,7 +560,8 @@
                                                                 <div class="contain-product none-overlay">
                                                                     <div class="product-thumb">
                                                                         <a href="#" class="link-to-product">
-                                                                            <img src="assets/images/products/p-15.jpg"
+
+                                                                            <img src="{{ URL::asset('frontend/assets/images/products/p-15.jpg') }}"
                                                                                 alt="dd" width="270"
                                                                                 height="270"
                                                                                 class="product-thumnail">
@@ -583,20 +589,20 @@
                                                 <div class="col-lg-12 col-md-12 col-sm-12 md-margin-top-9">
                                                     <div class="biolife-brand">
                                                         <ul class="brands">
-                                                            <li><a href="#"><img
-                                                                        src="assets/images/megamenu/brand-organic.png"
+                                                            <li><a href="#">
+                                                                    <img src="{{ URL::asset('frontend/assets/images/megamenu/brand-organic-2.png') }}"
                                                                         width="161" height="136"
                                                                         alt="organic"></a></li>
-                                                            <li><a href="#"><img
-                                                                        src="assets/images/megamenu/brand-explore.png"
+                                                            <li><a href="#"> <img
+                                                                        src="{{ URL::asset('frontend/assets/images/megamenu/brand-organic-2.png') }}"
                                                                         width="160" height="136"
                                                                         alt="explore"></a></li>
                                                             <li><a href="#"><img
-                                                                        src="assets/images/megamenu/brand-organic-2.png"
+                                                                        src="{{ URL::asset('frontend/assets/images/megamenu/brand-organic-2.png') }}"
                                                                         width="99" height="136"
                                                                         alt="organic 2"></a></li>
-                                                            <li><a href="#"><img
-                                                                        src="assets/images/megamenu/brand-eco-teas.png"
+                                                            <li><a href="#"> <img
+                                                                        src="{{ URL::asset('frontend/assets/images/megamenu/brand-organic-2.png') }}"
                                                                         width="164" height="136"
                                                                         alt="eco teas"></a></li>
                                                         </ul>
@@ -652,19 +658,19 @@
                                                         <h4 class="menu-title">Hot Brand</h4>
                                                         <ul class="brands">
                                                             <li><a href="#"><img
-                                                                        src="assets/images/megamenu/v-brand-organic.png"
+                                                                        src="{{ URL::asset('frontend/assets/images/megamenu/v-brand-organic.png') }}"
                                                                         width="167" height="74"
                                                                         alt="organic"></a></li>
                                                             <li><a href="#"><img
-                                                                        src="assets/images/megamenu/v-brand-explore.png"
+                                                                        src="{{ URL::asset('frontend/assets/images/megamenu/v-brand-explore.png') }}"
                                                                         width="167" height="72"
                                                                         alt="explore"></a></li>
                                                             <li><a href="#"><img
-                                                                        src="assets/images/megamenu/v-brand-organic-2.png"
+                                                                        src="{{ URL::asset('frontend/assets/images/megamenu/v-brand-organic-2.png') }}"
                                                                         width="167" height="99"
                                                                         alt="organic 2"></a></li>
                                                             <li><a href="#"><img
-                                                                        src="assets/images/megamenu/v-brand-eco-teas.png"
+                                                                        src="{{ URL::asset('frontend/assets/images/megamenu/v-brand-eco-teas.png') }}"
                                                                         width="167" height="67"
                                                                         alt="eco teas"></a></li>
                                                         </ul>
@@ -808,7 +814,7 @@
                     </div>
                     <div class="live-info">
                         <p class="telephone"><i class="fa fa-phone" aria-hidden="true"></i><b
-                                class="phone-number">Hotline: 0854 64 8877  </b></p>
+                                class="phone-number">Hotline: 0854 64 8877 </b></p>
                         <p class="working-time">Mon-Fri: 8:30am-7:30pm; Sat-Sun: 9:30am-4:30pm</p>
                     </div>
                 </div>
