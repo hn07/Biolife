@@ -271,20 +271,15 @@
 <!-- Scroll Top Button -->
 <a class="btn-scroll-top"><i class="biolife-icon icon-left-arrow"></i></a>
 
-<link rel="stylesheet" type="text/js" href="{{ asset('frontend/assets/js/bootstrap.min.js') }}">
-<link rel="stylesheet" type="text/js" href="{{ asset('frontend/assets/js/jquery-3.4.1.min.js') }}">
-<link rel="stylesheet" type="text/js" href="{{ asset('frontend/assets/js/jquery.countdown.min.js') }}">
-<link rel="stylesheet" type="text/js" href="{{ asset('frontend/assets/js/jquery.nice-select.min.js') }}">
-<link rel="stylesheet" type="text/js" href="{{ asset('frontend/assets/js/jquery.nicescroll.min.js') }}">
-<link rel="stylesheet" type="text/js" href="{{ asset('frontend/assets/js/slick.min.js') }}">
-<link rel="stylesheet" type="text/js" href="{{ asset('frontend/assets/js/biolife.framework.js') }}">
-<link rel="stylesheet" type="text/js" href="{{ asset('frontend/assets/js/functions.js') }}">
-
-<script src="assets/js/jquery-3.4.1.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/jquery.countdown.min.js"></script>
-<script src="assets/js/jquery.nice-select.min.js"></script>
-<script src="assets/js/jquery.nicescroll.min.js"></script>
-<script src="assets/js/slick.min.js"></script>
-<script src="assets/js/biolife.framework.js"></script>
-<script src="assets/js/functions.js"></script>
+<script src="{{ asset('frontend/assets/js/jquery-3.4.1.min.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/jquery.nice-select.min.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/jquery.nicescroll.min.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/slick.min.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/biolife.framework.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/functions.js') }}"></script>
+<!-- MDB -->
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.js"
+></script>

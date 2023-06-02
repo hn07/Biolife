@@ -13,17 +13,17 @@
             @endif
             <h1>{{ $title }}</h1>
             <div style="display: flex; align-items: center; justify-content: center;">
-                <form action="" method="POST" style="width: 30%">
+                <form action="{{ route('users.post_edit') }}" method="POST" style="width: 30%">
                     <div class="form-group">
                         <label>Họ và Tên</label>
-                        <input name="name" class="form-control" placeholder="Enter Họ và Tên" value="{{ old('name') }}">
+                        <input name="name" class="form-control" placeholder="Enter Họ và Tên" value="{{ old('name')  ?? $userDetail->name}}">
                         @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email</label>
-                        <input class="form-control" id="exampleInputEmail1" name="email" placeholder="Email" value="{{ old('email') }}">
+                        <input class="form-control" id="exampleInputEmail1" name="email" value="{{ old('email') ?? $userDetail->email }}" placeholder="Email" >
                         @error('email')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -32,7 +32,7 @@
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Check me out</label>
                     </div>
-                    <button type="submit" class="btn btn-primary">Đăng ký</button>
+                    <button type="submit" class="btn btn-primary">Cập nhật</button>
                     <a href="{{ route('users.index') }}" type="button" class="btn btn-warning">Quay lại</a>
                     @csrf
                 </form>

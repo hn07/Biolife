@@ -11,12 +11,7 @@ class FrontendController extends Controller
     public function index(){
         return view('Frontend.index');
     }
-    public function contact(){
-        // $users = DB::select('SELECT * FROM tbl_users WHERE name_user =:name_user',['name_user' =>'THANH DŨNG']);
-        $users = DB::table('tbl_users')->distinct()->get();  
-       
-        return view('Frontend.Pages.contact');
-    }
+  
 
 
     public function add(){

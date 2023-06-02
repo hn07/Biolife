@@ -1,10 +1,5 @@
 @extends('Frontend.Layouts.main')
 @section('main-content')
-
-<div class="hero-section hero-background">
-    <h1 class="page-title">Organic Fruits</h1>
-</div>
-
 <!--Navigation section-->
 <div class="container">
     <nav class="biolife-nav nav-86px">

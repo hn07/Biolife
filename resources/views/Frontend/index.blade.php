@@ -1657,14 +1657,14 @@
                     <li>
                         <div class="post-item effect-01 style-bottom-info layout-02 ">
                             <div class="thumbnail">
-                                <a href="#" class="link-to-post"><img src="assets/images/our-blog/post-thumb-01.jpg" width="370" height="270" alt=""></a>
+                                <a href="http://127.0.0.1:8000/blog/blog-post" class="link-to-post"><img src="assets/images/our-blog/post-thumb-01.jpg" width="370" height="270" alt=""></a>
                                 <div class="post-date">
                                     <span class="date">26</span>
                                     <span class="month">dec</span>
                                 </div>
                             </div>
                             <div class="post-content">
-                                <h4 class="post-name"><a href="#" class="linktopost">Ashwagandha: The #1 Herb in the World for Anxiety?</a></h4>
+                                <h4 class="post-name"><a href="http://127.0.0.1:8000/blog/blog-post" class="linktopost">Ashwagandha: The #1 Herb in the World for Anxiety?</a></h4>
                                 <div class="post-meta">
                                     <a href="#" class="post-meta__item author"><img src="assets/images/home-03/post-author.png" width="28" height="28" alt=""><span>Admin</span></a>
                                     <a href="#" class="post-meta__item btn liked-count">2<span class="biolife-icon icon-comment"></span></a>
@@ -1684,7 +1684,7 @@
                                 </div>
                                 <p class="excerpt">Did you know that red-staining foods are excellent lymph-movers? In fact, many plants that were historically used as dyes...</p>
                                 <div class="group-buttons">
-                                    <a href="#" class="btn readmore">continue reading</a>
+                                    <a href="http://127.0.0.1:8000/blog/blog-post" class="btn readmore">continue reading</a>
                                 </div>
                             </div>
                         </div>

@@ -2,14 +2,14 @@
 @section('main-content')
 
  <!--Navigation section-->
- {{-- <div class="container">
+ <div class="container">
      <nav class="biolife-nav">
          <ul>
              <li class="nav-item"><a href="index-2.html" class="permal-link">Home</a></li>
              <li class="nav-item"><span class="current-page">About us</span></li>
          </ul>
      </nav>
- </div> --}}
+ </div> 
 
  <div class="page-contain about-us">
 

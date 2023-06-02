@@ -1,5 +1,5 @@
 <!-- Preloader -->
-{{-- <div id="biof-loading">
+<div id="biof-loading">
     <div class="biof-loading-center">
         <div class="biof-loading-center-absolute">
             <div class="dot dot-one"></div>
@@ -7,7 +7,7 @@
             <div class="dot dot-three"></div>
         </div>
     </div>
-</div> --}}
+</div>
 
 <!-- HEADER -->
 <header id="header" class="header-area style-01 layout-03">
@@ -26,7 +26,7 @@
                     <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
                 </ul>
                 <ul class="horizontal-menu">
-                    <li><a href="login.html" class="login-link"><i
+                    <li><a href="http://127.0.0.1:8000/login" class="login-link"><i
                                 class="biolife-icon icon-login"></i>Login/Register</a></li>
                 </ul>
             </div>
@@ -36,7 +36,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-2 col-md-6 col-xs-6">
-                    <a href="index-2.html" class="biolife-logo"><img
+                    <a href="http://127.0.0.1:8000/" class="biolife-logo"><img
                             src="{{ URL::asset('frontend/assets/images/organic-3.png') }}" alt="biolife logo"
                             width="135" height="34"></a>
                 </div>
@@ -44,63 +44,10 @@
                     <div class="primary-menu">
                         <ul class="menu biolife-menu clone-main-menu clone-primary-menu" id="primary-menu"
                             data-menuname="main menu">
-                            <li class="menu-item"><a href="index-2.html">Home</a></li>
-                            <li class="menu-item"><a href="index-2.html">About</a></li>
-                            <li class="menu-item menu-item-has-children has-megamenu">
-                                <a href="#" class="menu-name" data-title="Shop">Shop</a>
-                                <div class="wrap-megamenu lg-width-900 md-width-750">
-                                    <div class="mega-content">
-                                        <div class="col-lg-3 col-md-3 col-xs-12 md-margin-bottom-0 xs-margin-bottom-25">
-                                            <div class="wrap-custom-menu vertical-menu">
-                                                <h4 class="menu-title">Fresh Berries</h4>
-                                                <ul class="menu">
-                                                    <li><a href="#">Fruit & Nut Gifts</a></li>
-                                                    <li><a href="#">Mixed Fruits</a></li>
-                                                    <li><a href="#">Oranges</a></li>
-                                                    <li><a href="#">Bananas & Plantains</a></li>
-                                                    <li><a href="#">Fresh Gala Apples</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-xs-12 md-margin-bottom-0 xs-margin-bottom-25">
-                                            <div class="wrap-custom-menu vertical-menu">
-                                                <h4 class="menu-title">Vegetables</h4>
-                                                <ul class="menu">
-                                                    <li><a href="#">Berries</a></li>
-                                                    <li><a href="#">Pears</a></li>
-                                                    <li><a href="#">Chili Peppers</a></li>
-                                                    <li><a href="#">Fresh Avocado</a></li>
-                                                    <li><a href="#">Grapes</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-xs-12 md-margin-bottom-0 xs-margin-bottom-25">
-                                            <div class="wrap-custom-menu vertical-menu ">
-                                                <h4 class="menu-title">Fresh Fruits</h4>
-                                                <ul class="menu">
-                                                    <li><a href="#">Basket of apples</a></li>
-                                                    <li><a href="#">Strawberry</a></li>
-                                                    <li><a href="#">Blueberry</a></li>
-                                                    <li><a href="#">Orange</a></li>
-                                                    <li><a href="#">Pineapple</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-xs-12 md-margin-bottom-0 xs-margin-bottom-25">
-                                            <div class="wrap-custom-menu vertical-menu">
-                                                <h4 class="menu-title">Featured Products</h4>
-                                                <ul class="menu">
-                                                    <li><a href="#">Coffee Creamers</a></li>
-                                                    <li><a href="#">Mayonnaise</a></li>
-                                                    <li><a href="#">Almond Milk</a></li>
-                                                    <li><a href="#">Fruit Jam</a></li>
-                                                    <li><a href="#">Beverages</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                            <li class="menu-item"><a href="http://127.0.0.1:8000/">Home</a></li>
+                            <li class="menu-item"><a href="http://127.0.0.1:8000/about">About</a></li>
+                            <li class="menu-item"><a href="http://127.0.0.1:8000/shop">Shop</a></li>
+
                             <li class="menu-item menu-item-has-children has-child">
                                 <a href="#" class="menu-name" data-title="Products">Products</a>
                                 <ul class="sub-menu">
@@ -137,40 +84,12 @@
                             </li>
 
                             <li class="menu-item menu-item-has-children has-megamenu">
-                                <a href="#" class="menu-name" data-title="Blog">Blog</a>
-                                <div class="wrap-megamenu lg-width-800 md-width-750">
+                                <a href="http://127.0.0.1:8000/blog" class="menu-name" data-title="Blog">Blog</a>
+                                <div class="wrap-megamenu ">
                                     <div class="mega-content">
-                                        <div class="col-lg-3 col-md-3 col-xs-6">
-                                            <div class="wrap-custom-menu vertical-menu">
-                                                <h4 class="menu-title">Blog Categories</h4>
-                                                <ul class="menu">
-                                                    <li><a href="#">Beauty (30)</a></li>
-                                                    <li><a href="#">Fashion (50)</a></li>
-                                                    <li><a href="#">Food (10)</a></li>
-                                                    <li><a href="#">Life Style (60)</a></li>
-                                                    <li><a href="#">Travel (10)</a></li>
-                                                    <li><a href="#">Nutrition (35)</a></li>
-                                                    <li><a href="#">Food Decoration (45)</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-xs-6">
-                                            <div class="wrap-custom-menu vertical-menu">
-                                                <h4 class="menu-title">Featured Posts</h4>
-                                                <ul class="menu">
-                                                    <li><a href="#">Post example<sup>#1</sup></a></li>
-                                                    <li><a href="#">Post example<sup>#2</sup></a></li>
-                                                    <li><a href="#">Post example<sup>#3</sup></a></li>
-                                                    <li><a href="#">Post example<sup>#4</sup></a></li>
-                                                    <li><a href="#">Post example<sup>#5</sup></a></li>
-                                                    <li><a href="#">Post example<sup>#6</sup></a></li>
-                                                    <li><a href="#">Post example<sup>#7</sup></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-xs-12 md-margin-top-0 xs-margin-top-25px">
+                                        <div class="col-lg-12 col-md-12 col-xs-12 md-margin-top-0 xs-margin-top-25px">
                                             <div class="block-posts">
-                                                <h4 class="menu-title">Recent Posts</h4>
+                                                <h4 class="menu-title">Bài viết gần đây</h4>
                                                 <ul class="posts">
                                                     <li>
                                                         <div class="block-post-item">
@@ -220,7 +139,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="menu-item"><a href="contact.html">Contact</a></li>
+                            <li class="menu-item"><a href="http://127.0.0.1:8000/contact">Contact</a></li>
                         </ul>
                     </div>
                 </div>
@@ -235,18 +154,6 @@
                                             class="biolife-icon icon-close-menu"></span></a>
                                     <input type="text" name="s" class="input-text" value=""
                                         placeholder="Search here...">
-                                    <select name="category">
-                                        <option value="-1" selected>All Categories</option>
-                                        <option value="vegetables">Vegetables</option>
-                                        <option value="fresh_berries">Fresh Berries</option>
-                                        <option value="ocean_foods">Ocean Foods</option>
-                                        <option value="butter_eggs">Butter & Eggs</option>
-                                        <option value="fastfood">Fastfood</option>
-                                        <option value="fresh_meat">Fresh Meat</option>
-                                        <option value="fresh_onion">Fresh Onion</option>
-                                        <option value="papaya_crisps">Papaya & Crisps</option>
-                                        <option value="oatmeal">Oatmeal</option>
-                                    </select>
                                     <button type="submit" class="btn-submit">go</button>
                                 </form>
                             </div>
@@ -254,7 +161,7 @@
 
                         <div class="minicart-block">
                             <div class="minicart-contain">
-                                <a href="javascript:void(0)" class="link-to">
+                                <a href="http://127.0.0.1:8000/shopping-cart/" class="link-to">
                                     <span class="icon-qty-combine">
                                         <i class="icon-cart-mini biolife-icon"></i>
                                         <span class="qty">8</span>
@@ -425,8 +332,8 @@
                                             </li>
                                         </ul>
                                         <p class="btn-control">
-                                            <a href="#" class="btn view-cart">view cart</a>
-                                            <a href="#" class="btn">checkout</a>
+                                            <a href="http://127.0.0.1:8000/shopping-cart/" class="btn view-cart">view cart</a>
+                                            <a href="http://127.0.0.1:8000/shopping-cart/check-out" class="btn">checkout</a>
                                         </p>
                                     </div>
                                 </div>
@@ -796,18 +703,7 @@
                         <form action="#" class="form-search" name="desktop-seacrh" method="get">
                             <input type="text" name="s" class="input-text" value=""
                                 placeholder="Search here...">
-                            <select name="category">
-                                <option value="-1" selected>All Categories</option>
-                                <option value="vegetables">Vegetables</option>
-                                <option value="fresh_berries">Fresh Berries</option>
-                                <option value="ocean_foods">Ocean Foods</option>
-                                <option value="butter_eggs">Butter & Eggs</option>
-                                <option value="fastfood">Fastfood</option>
-                                <option value="fresh_meat">Fresh Meat</option>
-                                <option value="fresh_onion">Fresh Onion</option>
-                                <option value="papaya_crisps">Papaya & Crisps</option>
-                                <option value="oatmeal">Oatmeal</option>
-                            </select>
+
                             <button type="submit" class="btn-submit"><i
                                     class="biolife-icon icon-search"></i></button>
                         </form>
@@ -815,7 +711,7 @@
                     <div class="live-info">
                         <p class="telephone"><i class="fa fa-phone" aria-hidden="true"></i><b
                                 class="phone-number">Hotline: 0854 64 8877 </b></p>
-                        <p class="working-time">Mon-Fri: 8:30am-7:30pm; Sat-Sun: 9:30am-4:30pm</p>
+                        <p class="working-time">Làm việc từ 8h30 - 17h00 các ngày trong tuần.</p>
                     </div>
                 </div>
             </div>
