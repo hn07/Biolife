@@ -1,10 +1,10 @@
 /*
 ----------------------------------------------------
-* Template Name    : Biolife - Organic Food        *
-* Author           : Kutetheme                     *
-* Version          : 1.0.0                         *
-* Created          : August 2019                   *
-* File Description : Main CSS file of the template *
+* Project          : Biolife                       *
+* Author           : Huu Nham                      *
+* Version          : 1.0.1                         *
+* Created          : May 2023                      *
+* File Description : Main CSS file of the project  *
 *---------------------------------------------------
 
 --------------- Table of Content -------------------
@@ -159,80 +159,7 @@ select{
 select option{
     color: #333333;
 }
-.nice-select{
-    background-color: transparent;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
-    border: none;
-    padding: 0 14px;
-    font-size: 14px;
-    line-height: 1;
-    min-height: auto;
-    height: auto;
-}
-.nice-select:after{
-    content: "\f0d7";
-    font-family: 'FontAwesome', sans-serif;
-    font-size: 12px;
-    color: #ffffff;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    border: none;
-    height: auto;
-    width: auto;
-    right: 1px;
-    margin-top: -6px;
-    line-height: 1;
-    padding: 0;
-    -webkit-transform-origin: center;
-    -ms-transform-origin: center;
-    transform-origin: center;
-    -webkit-transform: rotate(0);
-    -ms-transform: rotate(0);
-    transform: rotate(0);
-    -webkit-transition: none;
-    -moz-transition: none;
-    -o-transition: none;
-    transition: none;
-}
-.nice-select.open:after{
-    -webkit-transform: rotate( -180deg );
-    -ms-transform: rotate( -180deg );
-    transform: rotate( -180deg );
-}
-.nice-select .current{
-    color: #ffffff;
-    display: inline-block;
-    padding: 14px 0;
-}
-.nice-select .list{
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
-    -moz-box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
-    box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
-    border: 1px solid #e4e4e4;
-    padding: 3px 23px 10px 15px;
-    margin-top: 0;
-    z-index: 50;
-}
-.nice-select .option{
-    font-size: 14px;
-    line-height: 1;
-    color: #888888;
-    height: auto;
-    min-height: auto;
-    margin: 16px 0;
-    padding: 0;
-}
-.nice-select .option:hover,
-.nice-select .option.focus,
-.nice-select .option.selected.focus{
-    background-color: transparent;
-    font-weight: 400;
-}
+
 /* BIOLIFE ICON */
 @font-face {
     font-family: 'biolife';
@@ -648,18 +575,7 @@ body{
     content: "\f104";
     font-family: 'FontAwesome', sans-serif;
 }
-.biolife-mobile-panels .biolife-current-panel-title,
-.biolife-panels-actions-wrap .biolife-current-panel-title{
-    display: block;
-    text-align: center;
-    line-height: 50px;
-    padding: 0 50px;
-    font-weight: 600;
-    color: #333333;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-}
+
 .biolife-clone-wrap .biolife-panels {
     background: inherit;
     border-color: inherit;
@@ -882,6 +798,7 @@ body{
 }
 .header-top .top-bar .horizontal-menu a:hover{
     color: #dddddd;
+    text-decoration: none;
 }
 .header-top .left a>i{
     font-size: 15px;
@@ -911,14 +828,7 @@ body{
     display: inline-block;
     line-height: 42px;
 }
-.header-top .right .nice-select{
-    padding-left: 0;
-    display: inline-block;
-    float: initial;
-}
-.header-top .right .nice-select .list{
-    margin-left: -14px;
-}
+
 .header-top .top-bar .social-list{
     font-size: 0;
     display: inline-block;
@@ -1078,8 +988,7 @@ body.open-mobile-search .header-area.layout-02{
 .header-area.layout-02 .header-top{
     background-color: #ffffff;
 }
-.header-area.layout-02 .header-top .nice-select .current,
-.header-area.layout-02 .header-top .nice-select:after,
+
 .header-area.layout-02 .header-top .top-bar .social-list li a,
 .header-area.layout-02 .header-top .top-bar .horizontal-menu a{
     color: #333333;
@@ -2289,28 +2198,7 @@ body.open-mobile-search .header-area.layout-02{
     left: -4px;
     top: 4px;
 }
-.pr-detail-layout .advance-info .list{
-    padding: 0;
-    display: block;
-}
-.pr-detail-layout .advance-info .list li{
-    font-size: 14px;
-    line-height: 24px;
-    color: #666666;
-    padding-left: 13px;
-    position: relative;
-}
-.pr-detail-layout .advance-info .list li::before{
-    content: '';
-    width: 7px;
-    height: 7px;
-    display: block;
-    border-radius: 50%;
-    background-color: #666666;
-    position: absolute;
-    left: 0;
-    top: 9px;
-}
+
 .pr-detail-layout .advance-info .shipping-info{
     margin-top: 18px;
     padding-left: 13px;
@@ -2465,20 +2353,7 @@ body.open-mobile-search .header-area.layout-02{
 .header-search-bar.layout-01 select{
     display: none;
 }
-.header-search-bar.layout-01 .nice-select{
-    position: absolute;
-    top: 3px;
-    right: 118px;
-    padding-left: 0;
-}
-.header-search-bar.layout-01 .nice-select:after,
-.header-search-bar.layout-01 .nice-select .current{
-    color: #888888;
-}
-.header-search-bar.layout-01 .nice-select .current{
-    width: 103px;
-    text-align: right;
-}
+
 .header-search-bar.layout-01.no-product-cat .btn-submit{
     width: auto;
     padding: 12px 24px 12px 16px;
@@ -2519,12 +2394,7 @@ body.open-mobile-search .header-area.layout-02{
 .padding-top-2px{
     padding-top: 2px;
 }
-.header-area.layout-05 .header-top .top-bar .social-list li a,
-.header-area.layout-05 .header-top .nice-select .current,
-.header-area.layout-05 .header-top .nice-select:after,
-.header-area.layout-05 .header-top .top-bar .horizontal-menu a{
-    color: #333333;
-}
+
 .header-area.layout-05 .header-top{
     border-bottom: 1px solid #e3e3e3;
 }
@@ -2604,13 +2474,7 @@ body.open-mobile-search .header-area.layout-02{
 .newsletter-block .form-content .input-text:-moz-placeholder {
     line-height: 24px;
 }
-@media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0)
-{ @media {
-    /*
-      Define here the CSS styles applied only to Safari browsers
-      (any version and any device)
-     */
-}}
+
 .newsletter-block.layout-03{
     display: block;
     font-size: 0;
@@ -3169,8 +3033,7 @@ body.open-mobile-search .header-area.layout-02{
     -o-transition: all 350ms ease;
     transition: all 350ms ease;
 }
-.header-area.layout-01 .nice-select:after,
-.header-area.layout-01 .nice-select .current,
+
 .header-area.layout-01 .header-top .top-bar .social-list li a,
 .header-area.layout-01 .header-top .top-bar .horizontal-menu a{
     color: #333333;
@@ -3336,20 +3199,7 @@ body:not(.open-overlay) .header-area.layout-01{
 .mobile-search .mobile-search-content .input-text::placeholder {
     line-height: 25px;
 }
-.mobile-search .mobile-search-content .nice-select .current{
-    width: 100%;
-    color: #666666;
-}
-.mobile-search .mobile-search-content .nice-select{
-    display: inline-block;
-    float: left;
-    border: 1px solid #e6e6e6;
-    border-radius: 2px;
-    width: 160px;
-    clear: none;
-    margin-left: 0;
-    border-right: none;
-}
+
 .mobile-search .mobile-search-content .btn-submit{
     font-size: 16px;
     color: #ffffff;
@@ -3910,24 +3760,8 @@ body.open-overlay #overlay{
     margin-top: 3px;
     font-weight: 600;
 }
-.top-functions-area .flt-item .nice-select{
-    display: inline-block;
-    border: 2px solid #e6e6e6;
-    border-radius: 9999px;
-    background-color: #ffffff;
-    padding: 0 30px 0 20px;
-}
-.top-functions-area .flt-item .nice-select:after{
-    color: #9b9b9b;
-    right: 15px;
-    margin-top: -7px;
-}
-.top-functions-area .flt-item .nice-select .current{
-    font-weight: 600;
-    font-size: 15px;
-    color: #222222;
-    padding: 5px 0 9px;
-}
+
+
 .top-functions-area .flt-item .selector-item{
     display: inline-block;
     float: left;
@@ -3999,10 +3833,7 @@ body.open-overlay #overlay{
 .biolife-panigations-block ul li a.prev{
     margin-right: 15px;
 }
-.biolife-panigations-block ul li a:hover,
-.biolife-panigations-block ul li .current-page{
-    color: #ffffff;
-}
+
 .biolife-panigations-block ul li .sep{
     border-color: transparent;
     width: auto;
@@ -4144,9 +3975,7 @@ body.open-overlay #overlay{
     -o-transition: all 350ms ease;
     transition: all 350ms ease;
 }
-.sumary-product .media .slider-nav li.slick-current img{
-    border-width: 2px;
-}
+
 .sumary-product .product-attribute{
     display: inline-block;
     float: left;
@@ -4420,22 +4249,7 @@ body.open-overlay #overlay{
 .sumary-product .action-form .location-shipping-to{
     margin-top: 20px;
 }
-.sumary-product .action-form .location-shipping-to .nice-select{
-    width: 100%;
-    background-color: #ffffff;
-    padding-left: 20px;
-    padding-right: 32px;
-    border-radius: 9999px;
-}
-.sumary-product .action-form .location-shipping-to .nice-select .current{
-    font-size: 13px;
-    color: #888888;
-    padding: 15px 0;
-}
-.sumary-product .action-form .location-shipping-to .nice-select:after{
-    color: #888888;
-    right: 19px;
-}
+
 .sumary-product .action-form .acepted-payment-methods ul,
 .sumary-product .action-form .social-media ul{
     padding: 0;
@@ -6221,6 +6035,7 @@ body.open-overlay #overlay{
     position: relative;
     margin: 0 0 30px;
 }
+
 .single-post-contain .post-content blockquote::before{
     content: url(../images/blogpost/double-quote.png);
     display: block;
@@ -6403,15 +6218,7 @@ body.open-overlay #overlay{
     padding: 39px 13px 11px 84px;
     height: 188px;
 }
-.post-comments .comment-form .form-row .current-author{
-    font-size: 0;
-    line-height: 0;
-    display: inline-block;
-    position: absolute;
-    top: 32px;
-    left: 31px;
-    z-index: 2;
-}
+
 .post-comments .form-row.last-btns{
     direction: rtl;
     border-bottom: 2px solid #e6e6e6;
@@ -7012,37 +6819,7 @@ body.open-overlay #overlay{
 .slider-opt04__layout01 .text-content .third-line{
     color: #ffffff;
 }
-li.slick-current .slider-opt04__layout01 .buttons .btn,
-li.slick-current .slider-opt04__layout01 .text-content .first-line,
-li.slick-current .slider-opt04__layout01 .text-content .second-line,
-li.slick-current .slider-opt04__layout01 .text-content .third-line{
-    animation-duration: 1.6s;
-    -webkit-animation-duration: 1.6s;
-    animation-fill-mode: both;
-    -webkit-animation-fill-mode: both;
-    animation-name: bounceInRight;
-    -webkit-animation-name: bounceInRight;
-    -webkit-animation-delay: 0s;
-    animation-delay: 0s;
-    -webkit-animation-iteration-count: 1;
-    animation-iteration-count: 1;
-}
-li.slick-current .slider-opt04__layout01 .text-content .second-line{
-    animation-name: bounceInLeft;
-    -webkit-animation-name: bounceInLeft;
-}
-li.slick-current .slider-opt04__layout01 .text-content .third-line{
-    animation-name: bounceIn;
-    -webkit-animation-name: bounceIn;
-    -webkit-animation-delay: 0.6s;
-    animation-delay: 0.6s;
-}
-li.slick-current .slider-opt04__layout01 .buttons .btn{
-    animation-name: zoomIn;
-    -webkit-animation-name: zoomIn;
-    -webkit-animation-delay: 0.2s;
-    animation-delay: 0.2s;
-}
+
 .slider-opt04__layout01 .buttons .btn.btn-bold:not(:hover){
     background-color: #87be00;
 }
@@ -9860,16 +9637,7 @@ li.slick-current .slider-opt04__layout01 .buttons .btn{
 .biolife-gird-banners .grid-panel-item.right-content{
     width: 24.7395833333%;
 }
-.biolife-gird-banners .grid-panel .list-media{
-    padding: 0;
-    display: block;
-    margin: 0;
-}
-.biolife-gird-banners .grid-panel .list-media li{
-    list-style: none;
-    display: inline-block;
-    width: 50%;
-}
+
 .biolife-banner__grid{
     display: inline-block;
     width: 100%;
@@ -10514,9 +10282,7 @@ body.open-quickview-block .biolife-quickview-block{
     display: inline-block;
     border-width: 0;
 }
-.biolife-quickview-block .quickview-nav li.slick-current img{
-    border: 2px solid #ededed;
-}
+
 .biolife-quickview-inner .media .quickview-nav{
     width: 230px;
     margin-left: 10px;
@@ -10993,15 +10759,7 @@ body.open-quickview-block .biolife-quickview-block{
         font-size: 15px;
         float: left;
     }
-    .top-functions-area .flt-item.group-on-mobile .nice-select{
-        border-radius: 0;
-        border: none;
-        padding: 0 20px 0 10px;
-        clear: none;
-    }
-    .top-functions-area .flt-item.group-on-mobile .nice-select:after{
-        right: 10px;
-    }
+    
     body.top-refine-opened .top-functions-area .flt-item.group-on-mobile .wrap-selectors{
         visibility: visible;
         -webkit-transform: scale(1);
@@ -11481,12 +11239,7 @@ body.open-quickview-block .biolife-quickview-block{
         -o-transform: scale(1);
         transform: scale(1);
     }
-    body.open-mobile-search .mobile-search-content .nice-select .list{
-        max-height: 200px;
-        overflow-y: scroll;
-        margin: 0;
-        border-radius: 0;
-    }
+   
     .biolife-cart-info .minicart-contain a>.sub-total,
     .biolife-cart-info .minicart-contain a>.title{
         display: none;
@@ -11694,10 +11447,7 @@ body.open-quickview-block .biolife-quickview-block{
         padding: 55px 10px 10px 15px;
         height: 220px;
     }
-    .post-comments .comment-form .form-row .current-author{
-        top: 10px;
-        left: 10px;
-    }
+
     .single-post-contain .post-foot .auth-info .avata{
         margin-right: 5px;
     }
@@ -12578,12 +12328,7 @@ body.open-quickview-block .biolife-quickview-block{
         margin-top: -101px;
         top: 50%;
     }
-    .mobile-search .mobile-search-content .nice-select{
-        width: 100%;
-        border-top: none;
-        border-left: 0;
-        border-right: 0;
-    }
+    
     .mobile-search .mobile-search-content .input-text{
         width: 100%;
         margin-bottom: 15px;
@@ -13076,15 +12821,7 @@ body.open-quickview-block .biolife-quickview-block{
     .top-functions-area .flt-item .flt-title{
         display: none;
     }
-    .top-functions-area .flt-item.to-right .nice-select.orderby{
-        border-radius: 0;
-        border: 1px solid #e6e6e6;
-        padding-left: 10px;
-    }
-    .top-functions-area .flt-item.to-right .nice-select.orderby .current{
-        padding: 5px 0 7px;
-        width: 118px;
-    }
+   
 }
 
 @media ( max-width: 479px){
@@ -14565,4 +14302,13 @@ body.open-quickview-block .biolife-quickview-block{
     .biolife-carousel.nav-none-on-mobile.nav-center-03 .slick-arrow.next{
         display: none !important;
     }
+}
+table thead th a{
+    color: #333;
+    font-weight: 600;
+    text-decoration: none !important;
+}
+
+a:hover{
+    text-decoration: none !important;
 }

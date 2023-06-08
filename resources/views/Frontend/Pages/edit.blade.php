@@ -28,6 +28,28 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
+                    <div class="form-group " style="padding-bottom: 20px;">
+                        <label for=""></label>
+                        <select name="group_id" id="">
+                            <option value="">Chọn nhóm </option>
+                            @if (!empty($allGroups))
+                                @foreach ($allGroups as $item)
+                                    <option value="{{ $item->id }}" {{ old('group_id') == $item->id || $userDetail->group_id==$item->id ?'selected':false }}>{{ $item->name }}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                        @error('group_id')
+                            <span style="color: red;">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group" style="padding-bottom: 20px;">
+                        <label for=""></label>
+                        <select name="status" id="">
+                            <option value="0"{{ old('status' == 0 || $userDetail->status==0 ?'selected':false) }}>Chưa kích hoạt</option>
+                            <option value="1"{{ old('status' == 1 || $userDetail->status==1 ?'selected':false) }}>Kích hoạt </option>
+                        </select>
+
+                    </div>
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Check me out</label>

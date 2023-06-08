@@ -51,6 +51,7 @@ Route::prefix('users')->name('users.')->group(
         Route::get('/edit/{id}',[UserController::class,'get_edit'])->name('edit');
         Route::post('/update',[UserController::class,'post_edit'])->name('post_edit');
         Route::get('/delete/{id}',[UserController::class,'delete'])->name('delete');
+        Route::get('/testphp',[UserController::class,'testphp'])->name('testphp');
 
   
     }
@@ -58,9 +59,9 @@ Route::prefix('users')->name('users.')->group(
 
 
 //----- ADMIN
-Route::prefix('admin')->group(
+Route::prefix('admin')->name('admin.')->group(
     function () {
-        Route::get('/',[AdminController::class,'index']);
+        Route::get('/',[AdminController::class,'index'])->name('index');
         Route::get('/about',[AdminController::class,'about']);
     }
 );

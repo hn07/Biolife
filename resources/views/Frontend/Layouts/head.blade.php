@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400i,700i" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Ubuntu&amp;display=swap" rel="stylesheet">
 <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/assets/images/favicon.png') }}" />
+
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/style.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/main-color.css') }}">
@@ -16,6 +17,11 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/font-awesome.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/animate.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/mdb.min.css') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
 
 
 

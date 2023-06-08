@@ -7,9 +7,9 @@
             @endif
 
             @if ($errors->any())
-                
-                <div class="alert alert-danger"><h3>Dữ liệu lỗi vui lòng kiểm tra lại</h3></div>
-                
+                <div class="alert alert-danger">
+                    <h3>Dữ liệu lỗi vui lòng kiểm tra lại</h3>
+                </div>
             @endif
             <h1>{{ $title }}</h1>
             <div style="display: flex; align-items: center; justify-content: center;">
@@ -22,11 +22,34 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email</label>
-                        <input class="form-control" id="exampleInputEmail1" name="email" placeholder="Email" value="{{ old('email') }}">
+                        <label for="">Email</label>
+                        <input class="form-control" id="exampleInputEmail1" name="email" placeholder="Email"
+                            value="{{ old('email') }}">
                         @error('email')
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
+                    </div>
+                    <div class="form-group " style="padding-bottom: 20px;">
+                        <label for=""></label>
+                        <select name="group_id" id="">
+                            <option value="">Chọn nhóm </option>
+                            @if (!empty($allGroups))
+                                @foreach ($allGroups as $item)
+                                    <option value="{{ $item->id }}" {{ old('group_id' == $item->id?'selected':false) }}>{{ $item->name }}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                        @error('group_id')
+                            <span style="color: red;">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group" style="padding-bottom: 20px;">
+                        <label for=""></label>
+                        <select name="status" id="">
+                            <option value="0"{{ old('status' == 0?'selected':false) }}>Chưa kích hoạt</option>
+                            <option value="1"{{ old('status' == 1?'selected':false) }}>Kích hoạt </option>
+                        </select>
+
                     </div>
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
