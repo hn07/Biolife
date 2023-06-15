@@ -203,14 +203,7 @@ class UserController extends Controller
 
         return view('Frontend.Pages.contact');
     }
-    public function login()
-    {
-        return view('Frontend.Pages.login');
-    }
-    public function register()
-    {
-        return view('Frontend.Pages.register');
-    }
+
     public function shopping_cart()
     {
         return view('Frontend.Pages.shopping-cart');
@@ -219,4 +212,6 @@ class UserController extends Controller
     {
         return view('Frontend.Pages.checkout');
     }
+
+   
 }

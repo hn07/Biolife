@@ -21,12 +21,12 @@
             </div>
             <div class="top-bar right">
                 <ul class="social-list">
-                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-facebook"></i></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-pinterest"></i></i></a></li>
                 </ul>
                 <ul class="horizontal-menu">
-                    <li><a href="http://127.0.0.1:8000/login" class="login-link"><i
+                    <li><a href="{{ route('authentication.index') }}" class="login-link"><i
                                 class="biolife-icon icon-login"></i>Login/Register</a></li>
                 </ul>
             </div>

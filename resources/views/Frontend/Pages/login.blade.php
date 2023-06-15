@@ -4,7 +4,7 @@
     <div class="container">
         <nav class="biolife-nav">
             <ul>
-                <li class="nav-item"><a href="index-2.html" class="permal-link">Home</a></li>
+                <li class="nav-item"><a href="{{ route('authentication.index') }}" class="permal-link">Home</a></li>
                 <li class="nav-item"><span class="current-page">Authentication</span></li>
             </ul>
         </nav>
@@ -20,16 +20,38 @@
                     <!--Form Sign In-->
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="signin-container">
-                            <form action="#" name="frm-login" method="post">
+                            @if (Session::has('error'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{ Session::get('error') }}
+                                </div>
+                            @endif
+                            <form action="{{ route('authentication.loginPost') }}" method="POST" name="frm-login">
+                                @if (Session::has('success'))
+                                <div class="alert alert-success">{{ Session::get('success') }}</div>
+                            @endif
+                            @if (Session::has('fail'))
+                                <div class="alert alert-danger">{{ Session::get('fail') }}</div>
+                            @endif
                                 <p class="form-row">
                                     <label for="fid-name">Email Address:<span class="requite">*</span></label>
-                                    <input type="text" id="fid-name" name="name" value="" class="txt-input">
+                                    <input type="email" name="email" value="{{ old('email') }}" class="txt-input">
                                 </p>
+                                <span class="text-danger">
+                                    @error('email')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
                                 <p class="form-row">
                                     <label for="fid-pass">Password:<span class="requite">*</span></label>
-                                    <input type="email" id="fid-pass" name="email" value="" class="txt-input">
+                                    <input type="password" id="fid-pass" name="password" value="{{ old('password') }}" class="txt-input">
                                 </p>
+                                <span class="text-danger">
+                                    @error('password')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
                                 <p class="form-row wrap-btn">
+                                    @csrf
                                     <button class="btn btn-submit btn-bold" type="submit">đăng nhập</button>
                                     <a href="#" class="link-to-help">Forgot your password</a>
                                 </p>
@@ -50,7 +72,7 @@
                                     <li>Theo dõi đơn hàng mới</li>
                                     <li>Lưu các mục vào Danh sách yêu thích của bạn</li>
                                 </ul>
-                                <a href="http://127.0.0.1:8000/register" class="btn btn-bold">tạo tài khoản</a>
+                                <a href="{{ route('authentication.regestration') }}" class="btn btn-bold">tạo tài khoản</a>
                             </div>
                         </div>
                     </div>
