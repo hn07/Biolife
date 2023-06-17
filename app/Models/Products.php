@@ -46,6 +46,10 @@ class Products extends Model
         $delUser = DB::table('products')->where('id', '=', $id)->delete();
         return $delUser;
     }
+    public function deleteAllProduct(){
+        $deleted = DB::table('products')->delete();
+        return $deleted;
+    }
 }
 
 

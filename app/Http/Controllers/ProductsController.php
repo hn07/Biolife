@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\Categories;
+use App\Models\Admin;
+use App\Models\StatusNews;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -26,13 +28,18 @@ class ProductsController extends Controller
     public function table_data_product()
     {
         $products = Products::all();
-        // ->with('produts', $products)
-        return view('Frontend.Pages_Admin.data-product', compact('products'));
+        // ->with('produts', $products)$data = array();
+        $dataAdmin = array();
+        if (Session::has('loginId')) {
+            $dataAdmin = Admin::where('id', '=', Session::get('loginId'))->first();
+        }
+        return view('Frontend.Pages_Admin.data-product', compact('products', 'dataAdmin'));
     }
     public function addProduct()
     {
         $categoryList = Categories::all();
-        return view('Frontend.Pages_Admin.form-add-san-pham')->with('categoryList', $categoryList);
+        $StatusList = StatusNews::all();
+        return view('Frontend.Pages_Admin.form-add-san-pham',compact('categoryList','StatusList'));
     }
 
     public function addProductPost(Request $request)
@@ -104,17 +111,27 @@ class ProductsController extends Controller
             if (!empty($productDetail[0])) {
                 $deleteStatus = $this->product->deleteProduct($id);
                 if ($deleteStatus) {
-                    $msg = "Xóa người dùng thàng công";
+                    $msg = "Xóa sản phẩm thàng công";
                 } else {
-                    $msg = "Xóa người dùng thất bại";
+                    $msg = "Xóa sản phẩm thất bại";
                 }
             } else {
-                $msg = "Người dùng không tồn tại";
+                $msg = "Sản phẩm không tồn tại";
             }
         } else {
             $msg = "Liên kết không tồn tại";
         }
 
         return back()->with('msg', $msg);
+    }
+    
+    public function delete_all_product(){
+       $delete = $this->product->deleteAllProduct();
+       if($delete){
+        $delete_msg = "Hiện chưa có sản phẩm";
+       }else{
+        $delete_msg = "Xóa tất cả sản phẩm thất bại";
+       }
+       return view('Frontend.Pages_Admin.data-product',compact('delete_msg'));
     }
 }

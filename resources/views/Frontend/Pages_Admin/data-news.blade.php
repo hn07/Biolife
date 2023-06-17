@@ -4,7 +4,7 @@
         <div class="app-title">
             <ul class="app-breadcrumb breadcrumb side">
                 <li class="breadcrumb-item active">
-                    <p href="#"><b>Danh sách sản phẩm</b></p>
+                    <p href="#"><b>Danh sách bài viết</b></p>
                 </li>
 
             </ul>
@@ -23,9 +23,9 @@
                         <div class="row element-button">
                             <div class="col-sm-2">
 
-                                <a class="btn btn-add btn-sm" href="{{ route('admin.form-add-san-pham') }}"
-                                    title="Thêm"><i class="fas fa-plus"></i>
-                                    Tạo mới sản phẩm</a>
+                                <a class="btn btn-add btn-sm" href="{{ route('admin.form-add-news') }}" title="Thêm"><i
+                                        class="fas fa-plus"></i>
+                                    Tạo mới bài viết</a>
                             </div>
                             {{-- <div class="col-sm-2">
                                 <a class="btn btn-delete btn-sm nhap-tu-file" type="button" title="Nhập"
@@ -50,7 +50,7 @@
                                     onclick="myFunction(this)"><i class="fas fa-file-pdf"></i> Xuất PDF</a>
                             </div> --}}
                             <div class="col-sm-2">
-                                <a class="btn btn-outline-danger" href="{{ route('admin.delete-all-san-pham') }}"
+                                <a class="btn btn-outline-danger" href="{{ route('admin.delete-all-bai-viet') }}"
                                     title="Xóa"><i class="fas fa-trash-alt"></i> Xóa tất cả </a>
                             </div>
                         </div>
@@ -58,13 +58,13 @@
                             <thead>
                                 <tr>
                                     <th width="10"><input type="checkbox" id="all"></th>
-                                    <th>Mã sản phẩm</th>
-                                    <th>Tên sản phẩm</th>
+                                    <th>Mã bài viết</th>
+                                    <th>Tên bài viết</th>
                                     <th>Ảnh</th>
-                                    <th>Số lượng</th>
-                                    <th>Tình trạng</th>
-                                    <th>Giá tiền</th>
-                                    <th>Danh mục</th>
+                                    <th>Tác giả</th>
+                                    <th>Trạng thái</th>
+                                    <th>Danh mục bài viết</th>
+                                    <th>Ngày đăng</th>
                                     <th>Chức năng</th>
                                 </tr>
                             </thead>
@@ -75,32 +75,31 @@
                                     @endif
                                 </tr>
 
-                                @if (!empty($products))
-                                    @foreach ($products as $item)
+                                @if (!empty($news))
+                                    @foreach ($news as $item)
                                         <tr>
                                             <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                                            <td>{{ $item->code_product }}</td>
-                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->code_news }}</td>
+                                            <td>{{ $item->title }}</td>
                                             <td>
-                                                <img src="{{ asset($item->image) }}" width='60' height='60'
+                                                <img src="{{ asset($item->image_news) }}" width='60' height='60'
                                                     class="img img-responsive" />
                                             </td>
-                                            <td>{{ $item->quantity }}</td>
+                                            <td>{{ $item->author }}</td>
                                             <td><span class="badge bg-success">Còn hàng</span></td>
-                                            <td>{{ $item->price }} đ</td>
-                                            <td>{{ $item->category->name_category }}</td>
+                                            <td>{{ $item->categoryNews->name_category }} </td>
+                                            <td>{{ $item->created_at }}</td>
 
                                             <td>
-                                                <a href="{{ route('admin.edit-san-pham', ['id' => $item->id]) }}"><i
+                                                <a href="{{ route('admin.edit-news', ['id' => $item->id]) }}"><i
                                                         class="fa fa-edit"></i></a>
                                                 <a href="{{ route('admin.delete-san-pham', ['id' => $item->id]) }}"><i
                                                         class="fa fa-trash-alt"></i></a>
-
                                             </td>
                                         </tr>
                                     @endforeach
                                 @else
-                                    <td colspan="5">Chưa có sản phẩm</td>
+                                    <td colspan="5">Chưa có bài viết</td>
                                 @endif
 
                             </tbody>
@@ -112,8 +111,8 @@
     </main>
 
     <!--
-                                            MODAL
-                                            -->
+                                                        MODAL
+                                                        -->
     <div class="modal fade" id="ModalUP" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static"
         data-keyboard="false">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -182,8 +181,5 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!--
-                                            MODAL
-                                            -->
-@endsection
+        {{-- MODEL --}}
+    @endsection

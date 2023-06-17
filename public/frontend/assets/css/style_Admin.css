@@ -104,4 +104,12 @@ body {
         padding: 40px 15px 15px 15px;
     }
 }
-/* ======================== End Block Login Admin ====================== */
+
+
+
+/* ======================== SELECT ====================== */
+a:is(:link, :active, :visited).active{
+    color: rgb(22 22 72);
+    background: #c6defd;
+}
+

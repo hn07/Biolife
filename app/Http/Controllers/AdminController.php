@@ -14,7 +14,11 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('Frontend.Pages_Admin.index');
+        $dataAdmin = array();
+        if (Session::has('loginId')) {
+            $dataAdmin = Admin::where('id', '=', Session::get('loginId'))->first();
+        }
+        return view('Frontend.Pages_Admin.index', compact('dataAdmin'));
     }
 
     // ===== Đăng ký

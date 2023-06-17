@@ -3,6 +3,7 @@
 
 {{-- Js page admin --}}
 <script src="{{ asset('frontend/assets/js/jquery-3.2.1.min.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/js_Admin.js') }}"></script>
 <!--===============================================================================================-->
 <script src="{{ asset('frontend/assets/js/popper.min.js') }}"></script>
 <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
