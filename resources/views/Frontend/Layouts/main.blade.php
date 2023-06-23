@@ -7,5 +7,6 @@
     @include('Frontend.Layouts.header')
     @yield('main-content')
     @include('Frontend.Layouts.footer')
+    @yield('scripts')
 </body>
 </html>

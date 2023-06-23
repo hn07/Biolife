@@ -18,150 +18,137 @@
             <div id="main-content" class="main-content">
 
                 <!-- summary info -->
-                <div class="sumary-product single-layout">
-                    <div class="media">
-                        <ul class="biolife-carousel slider-for"
-                            data-slick='{"arrows":false,"dots":false,"slidesMargin":30,"slidesToShow":1,"slidesToScroll":1,"fade":true,"asNavFor":".slider-nav"}'>
+                @if (!empty($productDetail))
+                    <div class="sumary-product single-layout">
+                        <div class="media">
+                            <ul class="biolife-carousel slider-for"
+                                data-slick='{"arrows":false,"dots":false,"slidesMargin":30,"slidesToShow":1,"slidesToScroll":1,"fade":true,"asNavFor":".slider-nav"}'>
 
-                            <li><img src="{{ URL::asset('frontend/assets/images/details-product/detail_01.jpg') }}"
-                                    alt="" width="500" height="500"></li>
-                            <li><img src="{{ URL::asset('frontend/assets/images/details-product/detail_02.jpg') }}"
-                                    alt="" width="500" height="500"></li>
-                            <li><img src="{{ URL::asset('frontend/assets/images/details-product/detail_03.jpg') }}"
-                                    alt="" width="500" height="500"></li>
-                            <li><img src="{{ URL::asset('frontend/assets/images/details-product/detail_04.jpg') }}"
-                                    alt="" width="500" height="500"></li>
-                            <li><img src="{{ URL::asset('frontend/assets/images/details-product/detail_05.jpg') }}"
-                                    alt="" width="500" height="500"></li>
-                            <li><img src="{{ URL::asset('frontend/assets/images/details-product/detail_06.jpg') }}"
-                                    alt="" width="500" height="500"></li>
-                            <li><img src="{{ URL::asset('frontend/assets/images/details-product/detail_07.jpg') }}"
-                                    alt="" width="500" height="500"></li>
-                            <li><img src="{{ URL::asset('frontend/assets/images/details-product/detail_07.jpg') }}"
-                                    alt="" width="500" height="500"></li>
-                        </ul>
-                        <ul class="biolife-carousel slider-nav"
-                            data-slick='{"arrows":false,"dots":false,"centerMode":false,"focusOnSelect":true,"slidesMargin":10,"slidesToShow":4,"slidesToScroll":1,"asNavFor":".slider-for"}'>
-                            <li><img src="{{ URL::asset('frontend/assets/images/details-product/thumb_01.jpg') }}"
-                                    alt="" width="88" height="88"></li>
-                            <li><img src="{{ URL::asset('frontend/assets/images/details-product/thumb_02.jpg') }}"
-                                    alt="" width="88" height="88"></li>
-                            <li><img src="{{ URL::asset('frontend/assets/images/details-product/thumb_03.jpg') }}"
-                                    alt="" width="88" height="88"></li>
-                            <li><img src="{{ URL::asset('frontend/assets/images/details-product/thumb_04.jpg') }}"
-                                    alt="" width="88" height="88"></li>
-                            <li><img src="{{ URL::asset('frontend/assets/images/details-product/thumb_05.jpg') }}"
-                                    alt="" width="88" height="88"></li>
-                            <li><img src="{{ URL::asset('frontend/assets/images/details-product/thumb_06.jpg') }}"
-                                    alt="" width="88" height="88"></li>
-                            <li><img src="{{ URL::asset('frontend/assets/images/details-product/thumb_07.jpg') }}"
-                                    alt="" width="88" height="88"></li>
-                            <li><img src="{{ URL::asset('frontend/assets/images/details-product/thumb_07.jpg') }}"
-                                    alt="" width="88" height="88"></li>
-                        </ul>
-                    </div>
-                    <div class="product-attribute">
-                        <h3 class="title">Organic 10 Assorted Flavors Jelly Beans, 5.5 Oz</h3>
-                        <div class="rating">
+                                <li><img src="{{ $productDetail->image }}" alt="" width="500" height="500">
+                                </li>
+                                <li><img src="{{ URL::asset('frontend/assets/images/details-product/detail_02.jpg') }}"
+                                        alt="" width="500" height="500"></li>
+                                <li><img src="{{ URL::asset('frontend/assets/images/details-product/detail_03.jpg') }}"
+                                        alt="" width="500" height="500"></li>
+                                <li><img src="{{ URL::asset('frontend/assets/images/details-product/detail_04.jpg') }}"
+                                        alt="" width="500" height="500"></li>
+                                <li><img src="{{ URL::asset('frontend/assets/images/details-product/detail_05.jpg') }}"
+                                        alt="" width="500" height="500"></li>
+                                <li><img src="{{ URL::asset('frontend/assets/images/details-product/detail_06.jpg') }}"
+                                        alt="" width="500" height="500"></li>
+                                <li><img src="{{ URL::asset('frontend/assets/images/details-product/detail_07.jpg') }}"
+                                        alt="" width="500" height="500"></li>
+                                <li><img src="{{ URL::asset('frontend/assets/images/details-product/detail_07.jpg') }}"
+                                        alt="" width="500" height="500"></li>
+                            </ul>
+                            <ul class="biolife-carousel slider-nav"
+                                data-slick='{"arrows":false,"dots":false,"centerMode":false,"focusOnSelect":true,"slidesMargin":10,"slidesToShow":4,"slidesToScroll":1,"asNavFor":".slider-for"}'>
+                                <li><img src="{{ $productDetail->image }}" alt="" width="88" height="88">
+                                </li>
+                                <li><img src="{{ URL::asset('frontend/assets/images/details-product/thumb_02.jpg') }}"
+                                        alt="" width="88" height="88"></li>
+                                <li><img src="{{ URL::asset('frontend/assets/images/details-product/thumb_03.jpg') }}"
+                                        alt="" width="88" height="88"></li>
+                                <li><img src="{{ URL::asset('frontend/assets/images/details-product/thumb_04.jpg') }}"
+                                        alt="" width="88" height="88"></li>
+                                <li><img src="{{ URL::asset('frontend/assets/images/details-product/thumb_05.jpg') }}"
+                                        alt="" width="88" height="88"></li>
+                                <li><img src="{{ URL::asset('frontend/assets/images/details-product/thumb_06.jpg') }}"
+                                        alt="" width="88" height="88"></li>
+                                <li><img src="{{ URL::asset('frontend/assets/images/details-product/thumb_07.jpg') }}"
+                                        alt="" width="88" height="88"></li>
+                                <li><img src="{{ URL::asset('frontend/assets/images/details-product/thumb_07.jpg') }}"
+                                        alt="" width="88" height="88"></li>
+                            </ul>
+                        </div>
+                        <div class="product-attribute">
+                            <h3 class="title">{{ $productDetail->name }}</h3>
+                            {{-- <div class="rating">
                             <p class="star-rating"><span class="width-80percent"></span></p>
                             <span class="review-count">(04 Reviews)</span>
                             <span class="qa-text">Q&A</span>
                             <b class="category">By: Natural food</b>
-                        </div>
-                        <span class="sku">Sku: #76584HH</span>
-                        <p class="excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel maximus
-                            lacus. Duis ut mauris eget justo dictum tempus sed vel tellus.</p>
-                        <div class="price">
-                            <ins><span class="price-amount"><span class="currencySymbol">£</span>85.00</span></ins>
-                            <del><span class="price-amount"><span class="currencySymbol">£</span>95.00</span></del>
-                        </div>
-                        <div class="product-atts">
-                            <div class="atts-item">
-                                <span class="title">Color:</span>
-                                <ul class="color-list">
-                                    <li class="color-item"><a href="#" class="c-link"><span
-                                                class="symbol img-color"></span>Multi</a></li>
-                                    <li class="color-item"><a href="#" class="c-link"><span
-                                                class="symbol hex-code color-01"></span>Red</a></li>
-                                    <li class="color-item"><a href="#" class="c-link"><span
-                                                class="symbol hex-code color-02"></span>Orrange</a></li>
-                                    <li class="color-item"><a href="#" class="c-link"><span
-                                                class="symbol hex-code color-03"></span>Other</a></li>
-                                </ul>
+                        </div> --}}
+                            <span class="sku">Mã sản phẩm: {{ $productDetail->code_product }}</span>
+                            <p class="excerpt">{{ $productDetail->description }}</p>
+                            <div class="price">
+                                <ins><span class="price-amount"><span
+                                            class="currencySymbol">{{ number_format($productDetail->price) }}</span>
+                                        vnđ</span></ins>
+                                <del><span class="price-amount"><span
+                                            class="currencySymbol">{{ number_format($productDetail->price * 1.2) }}</span>
+                                        vnđ</span></del>
+                            </div>
+
+                            <div class="shipping-info">
+                                <p class="shipping-day">3-Day Shipping</p>
+                                <p class="for-today">Pree Pickup Today</p>
                             </div>
                         </div>
-                        <div class="shipping-info">
-                            <p class="shipping-day">3-Day Shipping</p>
-                            <p class="for-today">Pree Pickup Today</p>
+                        <div class="action-form">
+                            <form action="{{ route('shop.add-cart',['id' => $productDetail->id]) }}" method="POST">
+                                <div class="quantity-box">
+                                    <span class="title">Số lượng:</span>
+                                    <div class="qty-input">
+                                        <input type="text" name="qty12554 num_product" value="1" data-max_value="20"
+                                            data-min_value="1" data-step="1">
+                                        <a href="#" class="qty-btn btn-up"><i class="fa fa-caret-up"
+                                                aria-hidden="true"></i></a>
+                                        <a href="#" class="qty-btn btn-down"><i class="fa fa-caret-down"
+                                                aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                                <div class="total-price-contain">
+                                    <span class="title">Tổng giá tiền:</span>
+                                    <p class="price">£199.99</p>
+                                </div>
+                                @csrf
+
+                                <button class="buttons btn add-to-cart-btn" style="submit">add to cart
+                                    
+
+                                </button>
+
+                                <div class="social-media">
+                                    <ul class="social-list">
+                                        <li><a href="#" class="social-link"><i
+                                                    class="fa-brands fa-facebook"></i></a>
+                                        </li>
+                                        <li><a href="#" class="social-link"><i
+                                                    class="fa-brands fa-pinterest"></i></a>
+                                        </li>
+                                        <li><a href="#" class="social-link"><i
+                                                    class="fa-solid fa-share-nodes"></i></a>
+                                        </li>
+                                        <li><a href="#" class="social-link"><i
+                                                    class="fa-brands fa-instagram"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="acepted-payment-methods">
+                                    <ul class="payment-methods">
+                                        <li><img src="{{ URL::asset('frontend/assets/images/card1.jpg') }}"
+                                                alt="" width="51" height="36">
+                                        </li>
+                                        <li><img src="{{ URL::asset('frontend/assets/images/card2.jpg') }}"
+                                                alt="" width="51" height="36">
+                                        </li>
+                                        <li><img src="{{ URL::asset('frontend/assets/images/card3.jpg') }}"
+                                                alt="" width="51" height="36">
+                                        </li>
+                                        <li><img src="{{ URL::asset('frontend/assets/images/card4.jpg') }}"
+                                                alt="" width="51" height="36">
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <input type="hidden" name="product_id" value="{{ $productDetail->id }}">
+                            </form>
                         </div>
                     </div>
-                    <div class="action-form">
-                        <div class="quantity-box">
-                            <span class="title">Quantity:</span>
-                            <div class="qty-input">
-                                <input type="text" name="qty12554" value="1" data-max_value="20"
-                                    data-min_value="1" data-step="1">
-                                <a href="#" class="qty-btn btn-up"><i class="fa fa-caret-up"
-                                        aria-hidden="true"></i></a>
-                                <a href="#" class="qty-btn btn-down"><i class="fa fa-caret-down"
-                                        aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                        <div class="total-price-contain">
-                            <span class="title">Total Price:</span>
-                            <p class="price">£199.99</p>
-                        </div>
-                        <div class="buttons">
-                            <a href="#" class="btn add-to-cart-btn">add to cart</a>
-                            <p class="pull-row">
-                                <a href="#" class="btn wishlist-btn">wishlist</a>
-                                <a href="#" class="btn compare-btn">compare</a>
-                            </p>
-                        </div>
-                        <div class="location-shipping-to">
-                            <span class="title">Ship to:</span>
-                            <select name="shipping_to" class="country">
-                                <option value="-1">Select Country</option>
-                                <option value="america">America</option>
-                                <option value="france">France</option>
-                                <option value="germany">Germany</option>
-                                <option value="japan">Japan</option>
-                            </select>
-                        </div>
-                        <div class="social-media">
-                            <ul class="social-list">
-                                <li><a href="#" class="social-link"><i class="fa fa-twitter"
-                                            aria-hidden="true"></i></a></li>
-                                <li><a href="#" class="social-link"><i class="fa fa-facebook"
-                                            aria-hidden="true"></i></a></li>
-                                <li><a href="#" class="social-link"><i class="fa fa-pinterest"
-                                            aria-hidden="true"></i></a></li>
-                                <li><a href="#" class="social-link"><i class="fa fa-share-alt"
-                                            aria-hidden="true"></i></a></li>
-                                <li><a href="#" class="social-link"><i class="fa fa-instagram"
-                                            aria-hidden="true"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="acepted-payment-methods">
-                            <ul class="payment-methods">
-                                <li><img src="{{ URL::asset('frontend/assets/images/card1.jpg') }}" alt=""
-                                        width="51" height="36">
-                                </li>
-                                <li><img src="{{ URL::asset('frontend/assets/images/card2.jpg') }}" alt=""
-                                        width="51" height="36">
-                                </li>
-                                <li><img src="{{ URL::asset('frontend/assets/images/card3.jpg') }}" alt=""
-                                        width="51" height="36">
-                                </li>
-                                <li><img src="{{ URL::asset('frontend/assets/images/card4.jpg') }}" alt=""
-                                        width="51" height="36">
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
+                @else
+                    <li>Không có sản phẩm</li>
+                @endif
                 <!-- Tab info -->
                 <div class="product-tabs single-layout biolife-tab-contain">
                     <div class="tab-head">

@@ -50,6 +50,43 @@ class Products extends Model
         $deleted = DB::table('products')->delete();
         return $deleted;
     }
+
+
+
+    public function getAllProduct($filters = [],  $keyWords = null,  $sortArray = null, $perPage = null)
+    {
+        $users = DB::table($this->table)
+            ->select('products.*', 'categories.name_category as category_name')
+            ->join('categories', 'products.category_id', '=', 'categories.id');
+
+        $order_By = 'products.id';
+        $order_Type = 'desc';
+
+        if (!empty($sortArray) && isset($sortArray)) {
+            if (!empty($sortArray['sortBy']) && !empty($sortArray['sortType'])) {
+                $order_By = trim($sortArray['sortBy']);
+                $order_Type = trim($sortArray['sortType']);
+            }
+        }
+
+        $users = $users->orderBy($order_By, $order_Type);
+
+        if (!empty($filters)) {
+            $users = $users->where($filters);
+        }
+
+        if (!empty($keyWords)) {
+            $users = $users->where('products.name', 'like', '%' . $keyWords . '%')
+                ->orWhere('products.description', 'like', '%' . $keyWords . '%');
+        }
+
+        if (!empty($perPage)) {
+            $users = $users->paginate($perPage);
+        } else {
+            $users = $users->get();
+        }
+        return $users->withQueryString();
+    }
 }
 
 

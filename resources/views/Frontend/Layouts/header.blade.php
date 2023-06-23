@@ -46,7 +46,7 @@
                             data-menuname="main menu">
                             <li class="menu-item"><a href="http://127.0.0.1:8000/">Home</a></li>
                             <li class="menu-item"><a href="http://127.0.0.1:8000/about">About</a></li>
-                            <li class="menu-item"><a href="http://127.0.0.1:8000/shop">Shop</a></li>
+                            <li class="menu-item"><a href="{{ route('shop.tat-ca-san-pham') }}">Shop</a></li>
 
                             <li class="menu-item menu-item-has-children has-child">
                                 <a href="#" class="menu-name" data-title="Products">Products</a>
@@ -161,7 +161,7 @@
 
                         <div class="minicart-block">
                             <div class="minicart-contain">
-                                <a href="http://127.0.0.1:8000/shopping-cart/" class="link-to">
+                                <a href="{{ route('shop.shopping-cart') }}" class="link-to">
                                     <span class="icon-qty-combine">
                                         <i class="icon-cart-mini biolife-icon"></i>
                                         <span class="qty">8</span>
@@ -173,22 +173,22 @@
                                     <div class="cart-inner">
                                         <ul class="products">
                                             <li>
-                                                <div class="minicart-item">
-                                                    <div class="thumb">
-                                                        <a href="#">
+                                                            <div class="minicart-item">
+                                                                <div class="thumb">
+                                                                    <a href="#">
                                                             <img src="{{ URL::asset('frontend/assets/images/minicart/pr-01.jpg') }}"
-                                                                width="90" height="90"
-                                                                alt="National Fresh"></a>
-                                                    </div>
-                                                    <div class="left-info">
-                                                        <div class="product-title"><a href="#"
+                                                                            width="90" height="90"
+                                                                            alt="National Fresh"></a>
+                                                                </div>
+                                                                <div class="left-info">
+                                                                    <div class="product-title"><a href="#"
                                                                 class="product-name">National Fresh Fruit</a></div>
                                                         <div class="price">
                                                             <ins><span class="price-amount"><span
                                                                         class="currencySymbol">£</span>85.00</span></ins>
                                                             <del><span class="price-amount"><span
                                                                         class="currencySymbol">£</span>95.00</span></del>
-                                                        </div>
+                                                                    </div>
                                                         <div class="qty">
                                                             <label for="cart[id123][qty]">Qty:</label>
                                                             <input type="number" class="input-qty"
@@ -215,26 +215,26 @@
                                                     <div class="left-info">
                                                         <div class="product-title"><a href="#"
                                                                 class="product-name">National Fresh Fruit</a></div>
-                                                        <div class="price">
-                                                            <ins><span class="price-amount"><span
+                                                                    <div class="price">
+                                                                        <ins><span class="price-amount"><span
                                                                         class="currencySymbol">£</span>85.00</span></ins>
-                                                            <del><span class="price-amount"><span
+                                                                        <del><span class="price-amount"><span
                                                                         class="currencySymbol">£</span>95.00</span></del>
-                                                        </div>
-                                                        <div class="qty">
+                                                                    </div>
+                                                                    <div class="qty">
                                                             <label for="cart[id124][qty]">Qty:</label>
-                                                            <input type="number" class="input-qty"
+                                                                        <input type="number" class="input-qty"
                                                                 name="cart[id124][qty]" id="cart[id124][qty]"
                                                                 value="1" disabled>
-                                                        </div>
-                                                    </div>
+                                                                    </div>
+                                                                </div>
                                                     <div class="action">
                                                         <a href="#" class="edit"><i class="fa fa-pencil"
-                                                                aria-hidden="true"></i></a>
+                                                                            aria-hidden="true"></i></a>
                                                         <a href="#" class="remove"><i class="fa fa-trash-o"
-                                                                aria-hidden="true"></i></a>
-                                                    </div>
-                                                </div>
+                                                                            aria-hidden="true"></i></a>
+                                                            </div>
+                                            </div>
                                             </li>
                                             <li>
                                                 <div class="minicart-item">
