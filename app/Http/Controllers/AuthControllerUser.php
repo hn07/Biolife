@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Models\Admin;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -21,12 +22,15 @@ class AuthControllerUser extends Controller
     // ===== Đăng ký - Đăng nhập - Đăng xuất ---Khách Hàng 
     public function index()
     {
-        return view('Frontend.Pages.login');
+        $carts = Cart::content();
+
+        return view('Frontend.Pages.login',compact('carts'));
     }
 
     public function regestration()
     {
-        return view('Frontend.Pages.register');
+        $carts = Cart::content();
+        return view('Frontend.Pages.register',compact('carts'));
     }
 
     public function regesterUser(Request $request)
@@ -71,7 +75,7 @@ class AuthControllerUser extends Controller
 
             if (Hash::check($request->password, $customer->password)) {
                 $request->session()->put('loginId_Customer', $customer->id);
-                return redirect()->route('authentication.dashboard');
+                return redirect()->route('shop.tat-ca-san-pham');
             } else {
                 return redirect()->back()->with('fail', 'Mật khẩu không trùng khớp');
             }

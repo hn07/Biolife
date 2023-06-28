@@ -130,7 +130,8 @@
                                         <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                             <div class="contain-product layout-default">
                                                 <div class="product-thumb">
-                                                    <a href="{{ route('shop.chi-tiet-san-pham', $value->id) }}" class="link-to-product">
+                                                    <a href="{{ route('shop.chi-tiet-san-pham', $value->id) }}"
+                                                        class="link-to-product">
                                                         <img src="{{ $value->image }}" alt="dd" width="270"
                                                             height="270" class="product-thumnail">
                                                     </a>
@@ -141,9 +142,11 @@
                                                             class="pr-name">{{ $value->name }}</a></h4>
                                                     <div class="price">
                                                         <ins><span class="price-amount"><span
-                                                                    class="currencySymbol">£</span>85.00</span></ins>
+                                                                    class="currencySymbol">{{ number_format($value->price) }}</span>
+                                                                vnđ</span></ins>
                                                         <del><span class="price-amount"><span
-                                                                    class="currencySymbol">£</span>95.00</span></del>
+                                                                    class="currencySymbol">{{ number_format($value->price * 1.2) }}</span>
+                                                                vnđ</span></del>
                                                     </div>
                                                     <div class="shipping-info">
                                                         <p class="shipping-day">3-Day Shipping</p>
@@ -151,14 +154,22 @@
                                                     </div>
                                                     <div class="slide-down-box">
                                                         <p class="message">{{ $value->description }}</p>
-                                                        <div class="buttons">
-                                                            <a href="{{ route('shop.add-to-cart', $value->id) }}"
-                                                                class="btn add-to-cart-btn"><i class="fa fa-cart-arrow-down"
-                                                                    aria-hidden="true"></i>add to
-                                                                cart</a>
-                                                            <a href="#" class="btn compare-btn"><i
-                                                                    class="fa fa-random" aria-hidden="true"></i></a>
+
+
+
+                                                        <input type="hidden" value="{{ $value->id }}" name="id">
+                                                        <input type="hidden" value="{{ $value->name }}" name="name">
+                                                        <input type="hidden" value="{{ $value->price }}" name="price">
+                                                        <input type="hidden" value="{{ $value->image }}"
+                                                            name="image">
+                                                        <input type="hidden" value="1" name="quantity">
+                                                        <div class="d-flex justify-content-center">
+
+                                                            <a href="{{ route('shop.add-to-cart',['id' => $value->id]) }}" class="btn btn-success pull-right"
+                                                                role="button">Thêm vào giở hàng</a>
                                                         </div>
+
+
                                                     </div>
                                                 </div>
                                             </div>

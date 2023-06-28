@@ -9,7 +9,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\CategoryNewsController;
 use App\Http\Controllers\StatusNewsController;
-use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckOutController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -60,14 +61,19 @@ Route::prefix('shop')->name('shop.')->group(
         //===== Đăng ký 
         Route::get('/tat-ca-san-pham', [ProductsController::class, 'allProduct'])->name('tat-ca-san-pham');
         Route::get('/chi-tiet-san-pham/{id}', [ProductsController::class, 'detailProduct'])->name('chi-tiet-san-pham')->middleware('isLoggedInCustomer');
-        Route::get('/cart', [ProductsController::class, 'cart'])->name('cart')->middleware('isLoggedInCustomer');
-        Route::get('/shopping-cart', [ProductsController::class, 'shopping_cart'])->name('shopping-cart')->middleware('isLoggedInCustomer');
-        Route::get('/add-to-cart/{id}', [ProductsController::class, 'addToCart'])->name('add-to-cart')->middleware('isLoggedInCustomer');
-        Route::delete('/remove-from-cart', [ProductsController::class, 'removeFromCart'])->name('remove-from-cart')->middleware('isLoggedInCustomer');
-        Route::patch('/update-cart', [ProductsController::class, 'update_cart'])->name('update-cart')->middleware('isLoggedInCustomer');
-    
-        Route::post('/add-cart/{id}', [OrdersController::class, 'add_cart'])->name('add-cart')->middleware('isLoggedInCustomer');
+        Route::get('/shopping-cart', [CartController::class, 'shopping_cart'])->name('shopping-cart')->middleware('isLoggedInCustomer');
+        Route::get('/add-to-cart/{id}', [CartController::class, 'add'])->name('add-to-cart')->middleware('isLoggedInCustomer');
+        Route::get('/delete-cart/{id}', [CartController::class, 'delete'])->name('delete-cart');
+        Route::get('/delete-all-cart', [CartController::class, 'delete_all_cart'])->name('delete-all-cart');
+        Route::get('/update-cart', [CartController::class, 'update_cart'])->name('update-cart');
+          
+    }
+);
 
+Route::prefix('checkout')->name('checkout.')->group(
+    function () {
+        Route::get('/', [CheckOutController::class, 'indexAction'])->name('index');
+        Route::post('/add-order', [CheckOutController::class, 'addOrder'])->name('add-order');
     }
 );
 
@@ -76,7 +82,7 @@ Route::prefix('authentication')->name('authentication.')->group(
     function () {
         //===== Đăng ký 
         Route::get('/', [AuthControllerUser::class, 'index'])->name('index')->middleware('AlreadyLoginCustomer');
-        Route::get('/regestration', [AuthControllerUser::class, 'regestration'])->name('regestration')->middleware('AlreadyLoginCustomer');
+        Route::get('/regestration', [AuthControllerUser::class, 'regestration'])->name('regestration');
         Route::post('/regestration-user', [AuthControllerUser::class, 'regesterUser'])->name('regestration-user');
 
         //===== Đăng nhập

@@ -86,7 +86,7 @@
                             </div>
                         </div>
                         <div class="action-form">
-                            <form action="{{ route('shop.add-cart',['id' => $productDetail->id]) }}" method="POST">
+                            <form action="{{ route('shop.add-to-cart',['id' => $productDetail->id]) }}" method="POST">
                                 <div class="quantity-box">
                                     <span class="title">Số lượng:</span>
                                     <div class="qty-input">
