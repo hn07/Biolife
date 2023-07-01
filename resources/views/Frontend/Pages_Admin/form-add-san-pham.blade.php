@@ -93,8 +93,8 @@
                                         class="fas fa-folder-plus"></i> Thêm danh mục</a>
                             </div>
                             <div class="col-sm-2">
-                                <a class="btn btn-add btn-sm" data-toggle="modal" data-target="#addtinhtrang"><i
-                                        class="fas fa-folder-plus"></i> Thêm tình trạng</a>
+                                <a class="btn btn-add btn-sm" data-toggle="modal" data-target="#addnhacungcap"><i
+                                        class="fas fa-folder-plus"></i> Thêm nhà cung cấp</a>
                             </div>
                         </div>
 
@@ -111,8 +111,8 @@
                                 @error('code_product')
                                     {{ $message }}
                                 @enderror
-                                <input class="form-control" name="code_product" value="{{ old('code_product') }}"
-                                    type="number" placeholder="">
+                                <input class="form-control" name="code_product" value=" {{ old('code_product') }}"
+                                    type="text" placeholder="">
                             </div>
 
                             <div class="form-group col-md-3">
@@ -134,9 +134,9 @@
                             </div>
 
                             <div class="form-group col-md-3 ">
-                                <label for="exampleSelect1" class="control-label">Tình trạng</label>
+                                <label for="exampleSelect1" class="control-label">nhà cung cấp</label>
                                 <select class="form-control" id="exampleSelect1">
-                                    <option>-- Chọn tình trạng --</option>
+                                    <option>-- Chọn nhà cung cấp --</option>
                                     <option>Còn hàng</option>
                                     <option>Hết hàng</option>
                                 </select>
@@ -151,9 +151,8 @@
                                     @if ($categoryList)
                                         @foreach ($categoryList as $item)
                                             <option value="{{ $item->id }}"
-                                                {{ old('category') == $item->id ? 'selected' : "" }}>
+                                                {{ old('category') == $item->id ? 'selected' : '' }}>
                                                 {{ $item->name_category }}</option>
-                                              
                                         @endforeach
                                     @endif
 
@@ -162,12 +161,15 @@
                             </div>
                             <div class="form-group col-md-3 ">
                                 <label for="exampleSelect1" class="control-label">Nhà cung cấp</label>
-                                <select class="form-control" id="exampleSelect1">
+                                <select class="form-control" id="exampleSelect1" name="supplier">
                                     <option>-- Chọn nhà cung cấp --</option>
-                                    <option>Phong vũ</option>
-                                    <option>Thế giới di động</option>
-                                    <option>FPT</option>
-                                    <option>Võ Trường</option>
+                                    @if ($supplier)
+                                    @foreach ($supplier as $item)
+                                        <option value="{{ $item->id }}"
+                                            {{ old('supplier') == $item->id ? 'selected' : '' }}>
+                                            {{ $item->name_supplier }}</option>
+                                    @endforeach
+                                @endif
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
@@ -195,19 +197,48 @@
                                 </div>
                                 <div id="boxchoice">
                                     <a href="javascript:" class="Choicefile"><i class="fas fa-cloud-upload-alt"></i> Chọn
-                                        ảnh</a>
+                                        ảnh đại diện sản phẩm</a>
                                     <p style="clear:both"></p>
                                 </div>
 
+
                             </div>
+                            <div class="form-group">
+                                <label for="images" class=" mt-4">Thêm ảnh phụ</label>
+                                <input type="file" class="form-control" name="images[]" multiple accept="image/*"
+                                    id="images">
+                            </div>
+
+                            <div id="preview-images"></div>
+
                             <div class="form-group col-md-12">
                                 <label class="control-label">Mô tả sản phẩm</label>
                                 @error('mota')
                                     {{ $message }}
                                 @enderror
-                                <textarea class="form-control"   name="mota" id="desc">{{ old('mota') }}</textarea>
+                                <textarea class="form-control" name="mota" id="desc">{{ old('mota') }}</textarea>
                                 <script>
                                     CKEDITOR.replace('mota');
+                                </script>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label class="control-label">Lợi ích và ứng dụng</label>
+                                @error('beneficial')
+                                    {{ $message }}
+                                @enderror
+                                <textarea class="form-control" name="beneficial" id="desc">{{ old('beneficial') }}</textarea>
+                                <script>
+                                    CKEDITOR.replace('beneficial');
+                                </script>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label class="control-label">Hướng dẫn sử dụng</label>
+                                @error('User_manual')
+                                    {{ $message }}
+                                @enderror
+                                <textarea class="form-control" name="User_manual" id="desc">{{ old('User_manual') }}</textarea>
+                                <script>
+                                    CKEDITOR.replace('User_manual');
                                 </script>
                             </div>
                     </div>
@@ -271,14 +302,16 @@
                             </div>
                             <div class="form-group col-md-12">
                                 <label class="control-label">Mô tả danh mục mới</label>
-                                <input class="form-control" name="descCategory" type="text" required>
+                                <input class="form-control" name="descCategory" type="text">
                             </div>
                             <div class="form-group col-md-12">
                                 <label class="control-label">Danh mục sản phẩm hiện đang có</label>
                                 <ul style="padding-left: 20px;">
                                     @if ($categoryList)
                                         @foreach ($categoryList as $item)
-                                            <li>{{ $item->name_category }}</li>
+                                            <li><a href="{{ route('admin.xoa-danh-muc-san-pham', ['id' => $item->id]) }}">
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                </a> {{ $item->name_category }} </i>
                                         @endforeach
                                     @endif
                                 </ul>
@@ -301,29 +334,47 @@
 
 
 
-    {{-- MODAL TÌNH TRẠNG --}}
-    <div class="modal fade" id="addtinhtrang" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    {{-- MODAL nhà cung cấp --}}
+    <div class="modal fade" id="addnhacungcap" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="form-group  col-md-12">
-                            <span class="thong-tin-thanh-toan">
-                                <h5>Thêm mới tình trạng</h5>
-                            </span>
+                <form action="{{ route('admin.add-supplier-post') }}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="form-group  col-md-12">
+                                <span class="thong-tin-thanh-toan">
+                                    <h5>Thêm mới nhà cung cấp</h5>
+                                </span>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label class="control-label">Nhập nhà cung cấp mới</label>
+                                <input class="form-control" name="supplier" type="text" required>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label class="control-label">Mô tả nhà cung cấp mới</label>
+                                <input class="form-control" name="descSupplier" type="text">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label class="control-label">Nhà cung cấp hiện đang có</label>
+                                <ul style="padding-left: 20px;">
+                                    @if ($supplier)
+                                        @foreach ($supplier as $item)
+                                            <li><a href="{{ route('admin.xoa-nha-cung-cap-san-pham', ['id' => $item->id]) }}">
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                </a> {{ $item->name_supplier }} </i>
+                                        @endforeach
+                                    @endif
+                                </ul>
+                            </div>
                         </div>
-                        <div class="form-group col-md-12">
-                            <label class="control-label">Nhập tình trạng mới</label>
-                            <input class="form-control" type="text" required>
-                        </div>
+                        <BR>
+                        <button class="btn btn-save" >Lưu lại</button>
+                        <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
+                        <BR>
                     </div>
-                    <BR>
-                    <button class="btn btn-save" type="button">Lưu lại</button>
-                    <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
-                    <BR>
-                </div>
+                </form>
                 <div class="modal-footer">
                 </div>
             </div>
@@ -331,4 +382,23 @@
     </div>
 
     {{-- MODAL --}}
+@endsection
+@section('javascript')
+    <script>
+        document.getElementById("images").addEventListener("change", function() {
+            var previewImages = document.getElementById("preview-images");
+            previewImages.innerHTML = "";
+            for (var i = 0; i < this.files.length; i++) {
+                var file = this.files[i];
+                var reader = new FileReader();
+                reader.addEventListener("load", function() {
+                    var image = document.createElement("img");
+                    image.src = reader.result;
+                    image.style.maxWidth = "300px";
+                    previewImages.appendChild(image);
+                }, false);
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 @endsection

@@ -19,15 +19,18 @@
 <!-- Main CSS-->
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/main_admin.css') }}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-<!-- or -->
 <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+{{-- jquery --}}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <!-- Font-icon css-->
 <link rel="stylesheet" type="text/css"
     href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></script>
 {{-- form add san pham --}}
 <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
 <script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>

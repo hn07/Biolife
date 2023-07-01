@@ -3,7 +3,7 @@
 <head>
     @include('Frontend.Layouts.head')
 </head>
-<body>
+<body onload="time()">
     @include('Frontend.Layouts.header')
     @yield('main-content')
     @include('Frontend.Layouts.footer')

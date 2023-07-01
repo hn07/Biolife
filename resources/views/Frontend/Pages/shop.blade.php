@@ -153,7 +153,7 @@
                                                         <p class="for-today">Pree Pickup Today</p>
                                                     </div>
                                                     <div class="slide-down-box">
-                                                        <p class="message">{{ $value->description }}</p>
+                                                        <p class="message">{{ Str::limit($value->description, 100, '...')  }}</p>
 
 
 

@@ -1,13 +1,10 @@
 <div style="width: 600px; margin: 0 auto">
     <div style="text-align: center">
         <h2>Xin chào {{ $order->username }}</h2>
-        <p>Bạn đã đặt hàng tại hệ thống của chúng tôi vui lòng kiểm tra lại thông tin đơn hàng của bạn và nhất vào nút
-            xác nhận đơn hàng</p>
-        <p>
-            <a href="{{ route('order.accept-order', ['order' => $order->id, 'token' => $order->token]) }}"
-                style="display: inline-block; background: green; color: #fff; padding: 7px 25px; font-weight: bold;"> Xác
-                nhận đơn hàng của bạn!</a>
-        </p>
+        <p>Xác nhận đơn hàng thành công</p>
+        <p>Cảm ơn bạn đã tin tưởng và mua hàng tại cửa hàng của chúng tôi, chúng tôi sẽ liên hệ với bạn trong thời gian
+            sớm nhất để giao hàng!</p>
+
 
     </div>
 </div>
@@ -96,7 +93,7 @@
             style="border-bottom: 1px solid black;border-right: 1px solid black;border-left: 1px solid black;text-align: right; padding: 5px;">
             Lời chúc:</th>
         <td style="border-bottom: 1px solid black;border-right: 1px solid black; padding: 5px;">
-            Xin chúc anh/chị cùng gia đình dồi dào sức khỏe, hạnh phúc và tiếp tục đồng hành cùng Biolife
+            Xin chúc anh/chị cùng gia đình dồi dào sức khỏe, hạnh phúc và tiếp tục đồng hành cùng Biolife.
         </td>
     </tr>
     <tr>
@@ -119,23 +116,28 @@
             style="border-bottom: 1px solid black;border-right: 1px solid black; border-top: 1px solid black; padding: 5px;">
             Thành tiền</th>
     </tr>
-    @foreach ($carts as $cart)
-        <tr>
-            <td
-                style="border-bottom: 1px solid black;border-right: 1px solid black;border-left: 1px solid black; padding: 5px;">
-                {{ $cart->name }}</td>
-            <td style="border-bottom: 1px solid black;border-right: 1px solid black; padding: 5px;">
-                {{ number_format($cart->qty) }}
-            </td>
-            <td style="border-bottom: 1px solid black;border-right: 1px solid black; padding: 5px;">
-                {{ number_format($cart->price) }} vnđ
-            </td>
-            <td style="border-bottom: 1px solid black;border-right: 1px solid black; padding: 5px;">
-                {{ $cart->qty * $cart->price }}</td>
-        </tr>
-    @endforeach
+    @if ($order_id[0] == $order->id)
+        @foreach ($order_details as $order_detail)
+            <tr>
+                <td
+                    style="border-bottom: 1px solid black;border-right: 1px solid black;border-left: 1px solid black; padding: 5px;">
+                    {{ $order->username }}</td>
+                <td style="border-bottom: 1px solid black;border-right: 1px solid black; padding: 5px; text-align: center">
+                    {{ $order_detail->quantity }}
+                </td>
+                <td style="border-bottom: 1px solid black;border-right: 1px solid black; padding: 5px;">
+                    {{ number_format($order_detail->price) }} vnđ
+                </td>
+                <td style="border-bottom: 1px solid black;border-right: 1px solid black; padding: 5px;">
+                    {{ number_format($order_detail->quantity * $order_detail->price) }} vnđ</td>
+            </tr>
+        @endforeach
+    @endif
+
 </table>
-<h3>Tổng hóa đơn: {{ $subtotal }} vnđ</h3>
+@if ($order_id[0] == $order->id)
+<h3>Tổng hóa đơn: {{ $subtotal[0] }} vnđ</h3>
+@endif
 
 <hr>
 <h3>Trạng thái đơn hàng!</h3>

@@ -29,5 +29,16 @@ class Categories extends Model
         ->get();
         return $category;
     }
-
+    public function deleteCategory($id)
+    {
+        $category = DB::table($this->table)->where('id', '=', $id)->delete();
+        return $category;
+    }
+    public function getDetail($id)
+    {
+        $getDetail = DB::table($this->table)
+            ->where('id', $id)
+            ->get();
+        return $getDetail;
+    }
 }

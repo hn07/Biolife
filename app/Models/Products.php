@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 class Products extends Model
 {
     protected $table = 'products';
+    protected $guarded = [];
 
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -22,9 +23,12 @@ class Products extends Model
         'name',
         'quantity',
         'description',
+        'beneficial',
+        'User_manual',
         'price',
         'image',
         'category_id',
+        'supplier_id',
         'created_at',
         'updated_at',
     ];
@@ -34,6 +38,19 @@ class Products extends Model
         return $this->belongsTo(Categories::class, 'category_id', 'id');
         //foreign_key //local_key
     }
+    function supplier()
+    {
+        return $this->belongsTo(Supplier::class, 'supplier_id', 'id');
+        //foreign_key //local_key
+    }
+
+    //lay ra anh cua san pham
+    public function images()
+    {
+        return $this->hasMany(ImageSubProduct::class);
+    }
+
+    //lay ra chi tiet san pham
     public function getDetail($id)
     {
         $getDetail = DB::table($this->table)
@@ -42,12 +59,20 @@ class Products extends Model
         return $getDetail;
     }
 
+    //update san pham
+    public function updataProduct($data, $id)
+    {
+        return DB::table($this->table)->where('id', $id)->update($data);
+    }
+
+    //xoa san pham
     public function deleteProduct($id)
     {
         $delUser = DB::table('products')->where('id', '=', $id)->delete();
         return $delUser;
     }
-    public function deleteAllProduct(){
+    public function deleteAllProduct()
+    {
         $deleted = DB::table('products')->delete();
         return $deleted;
     }
@@ -88,8 +113,4 @@ class Products extends Model
         }
         return $users->withQueryString();
     }
-
-
 }
-
-

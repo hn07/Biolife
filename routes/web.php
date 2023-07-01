@@ -11,6 +11,7 @@ use App\Http\Controllers\CategoryNewsController;
 use App\Http\Controllers\StatusNewsController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckOutController;
+use App\Http\Controllers\SupplierNewController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -66,7 +67,6 @@ Route::prefix('shop')->name('shop.')->group(
         Route::get('/delete-cart/{id}', [CartController::class, 'delete'])->name('delete-cart');
         Route::get('/delete-all-cart', [CartController::class, 'delete_all_cart'])->name('delete-all-cart');
         Route::get('/update-cart', [CartController::class, 'update_cart'])->name('update-cart');
-          
     }
 );
 
@@ -76,6 +76,13 @@ Route::prefix('checkout')->name('checkout.')->group(
         Route::post('/add-order', [CheckOutController::class, 'addOrder'])->name('add-order');
     }
 );
+
+Route::prefix('order')->name('order.')->group(
+    function () {
+        Route::get('accept-order/{order}/{token}', [CheckOutController::class, 'accept'])->name('accept-order');
+    }
+);
+
 
 //----- Auth User Controller 
 Route::prefix('authentication')->name('authentication.')->group(
@@ -124,13 +131,20 @@ Route::prefix('admin')->name('admin.')->group(
         Route::get('/form-add-san-pham', [ProductsController::class, 'addProduct'])->middleware('isLoggedIn')->name('form-add-san-pham');
         Route::post('/add-Product-Post', [ProductsController::class, 'addProductPost'])->name('add-Product-Post');
         Route::get('/edit-san-pham/{id}', [ProductsController::class, 'edit_san_pham'])->name('edit-san-pham');
+        Route::post('/edit-san-pham-post', [ProductsController::class, 'post_edit'])->name('edit-san-pham-post');
         Route::get('/delete-san-pham/{id}', [ProductsController::class, 'delete_san_pham'])->name('delete-san-pham');
         Route::get('/delete-all-san-pham', [ProductsController::class, 'delete_all_product'])->name('delete-all-san-pham');
+        Route::get('/delete-image/{imageId}', [ProductsController::class, 'deleteImage'])->name('delete-image');
 
 
         //===== Quản lý danh mục sản phẩm
         Route::get('/add-category-get', [CategoryController::class, 'addCategoryGet'])->name('add-category-get');
         Route::post('/add-category-post', [CategoryController::class, 'addCategoryPost'])->name('add-category-post');
+        Route::get('/xoa-danh-muc-san-pham/{id}', [CategoryController::class, 'delete_danh_muc'])->name('xoa-danh-muc-san-pham');
+
+        //===== Quản lý nhà cung cấp sản phẩm
+        Route::post('/add-supplier-post', [SupplierNewController::class, 'addSupplierPost'])->name('add-supplier-post');
+        Route::get('/xoa-nha-cung-cap-san-pham/{id}', [SupplierNewController::class, 'delete_supplier'])->name('xoa-nha-cung-cap-san-pham');
 
 
         //===== Quản lý bài viết

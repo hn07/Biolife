@@ -87,7 +87,7 @@
                                             </td>
                                             <td>{{ $item->quantity }}</td>
                                             <td><span class="badge bg-success">Còn hàng</span></td>
-                                            <td>{{ $item->price }} đ</td>
+                                            <td>{{ number_format($item->price) }} đ</td>
                                             <td>{{ $item->category->name_category }}</td>
 
                                             <td>

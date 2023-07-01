@@ -6,6 +6,7 @@
 <body onload="time()" class="app sidebar-mini rtl">
     @include('Frontend.Layouts.header_Admin')
     @yield('main-content')
+    @yield('javascript')
     @include('Frontend.Layouts.footer_Admin')
 </body>
 </html>

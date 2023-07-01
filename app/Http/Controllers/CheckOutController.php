@@ -8,6 +8,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class CheckOutController extends Controller
 {
@@ -25,8 +26,12 @@ class CheckOutController extends Controller
     {
         if ($request->payment_type == 'pay_later') {
             // them don hang moi
+            $token = strtolower(Str::random(20));
             $order = Order::make($request->all());
+            $order->token = $token;
             $order->save();
+
+
             // them chi tiet don hang
             $carts = Cart::content();
             foreach ($carts as $item) {
@@ -68,10 +73,45 @@ class CheckOutController extends Controller
             'subtotal' => $subtotal,
             'carts' => $carts,
         ];
+
         Mail::send('Frontend.Pages.email', $data, function ($message) use ($email_to, $subject) {
             $message->from('nguyennham2580@gmail.com', 'Biolife');
             $message->to($email_to);
             $message->subject($subject);
         });
+    }
+
+    public function accept(Order $order, $token)
+    {
+        if ($order->token === $token) {
+            $order->update(['status' => 1]);
+            $subject = 'Đặt hàng thành công';
+          
+            $order_details = Order_Detail::where('order_id', $order->id)->get();
+            $subtotal = $order_details->map(function ($order_details) {
+                return $order_details->total;
+            })->toArray();;
+            $order_id = $order_details->map(function ($order_details) {
+                return $order_details->order_id;
+            })->toArray();
+            $data = [
+                'order' => $order,
+                'subject' => $subject,              
+                'subtotal' => $subtotal,
+                'order_details' => $order_details,
+                'order_id' => $order_id,
+            ];
+            
+         
+            $email_to = $order->email_address;
+            Mail::send('Frontend.Pages.email-accept-order', $data, function ($message) use ($email_to, $subject) {
+                $message->from('nguyennham2580@gmail.com', 'Biolife');
+                $message->to($email_to);
+                $message->subject($subject);
+            });
+            return redirect()->route('shop.tat-ca-san-pham')->with('success', 'Đặt hàng thành công');
+        } else {
+            return redirect()->route('shop.tat-ca-san-pham')->with('error', 'Đặt hàng thất bại');
+        }
     }
 }

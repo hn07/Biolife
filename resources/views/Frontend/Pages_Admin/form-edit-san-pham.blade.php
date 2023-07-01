@@ -94,11 +94,11 @@
                             </div>
                             <div class="col-sm-2">
                                 <a class="btn btn-add btn-sm" data-toggle="modal" data-target="#addtinhtrang"><i
-                                        class="fas fa-folder-plus"></i> Thêm tình trạng</a>
+                                        class="fas fa-folder-plus"></i> Thêm nhà cung cấp</a>
                             </div>
                         </div>
 
-                        <form class="row" action="{{ route('admin.add-Product-Post') }}" method="POST"
+                        <form class="row" action="{{ route('admin.edit-san-pham-post') }}" method="POST"
                             enctype="multipart/form-data">
                             @if (Session::has('success'))
                                 <div class="alert alert-success">{{ Session::get('success') }}</div>
@@ -107,25 +107,22 @@
                                 <div class="alert alert-danger">{{ Session::get('error') }}</div>
                             @endif
                             <div class="form-group col-md-3">
-                                <label class="control-label">Mã sản phẩm </label>
-                                @error('code_product')
+                                <label class="control-label">Mã sản phẩm</label>
+                                @error('name')
                                     {{ $message }}
                                 @enderror
-                                <input class="form-control" name="code_product"
-                                    value="{{ old('code_product') ?? $productDetail->code_product }}" type="number"
-                                    placeholder="">
+                                <input class="form-control"
+                                    value="{{ old('code_product') ?? $productDetail->code_product }}" name="code_product"
+                                    type="text">
                             </div>
-
                             <div class="form-group col-md-3">
                                 <label class="control-label">Tên sản phẩm</label>
                                 @error('name')
                                     {{ $message }}
                                 @enderror
-                                <input class="form-control" value="{{ old('name') ?? $productDetail->name }}"
-                                    name="name" type="text">
+                                <input class="form-control" value="{{ old('name') ?? $productDetail->name }}" name="name"
+                                    type="text">
                             </div>
-
-
 
                             <div class="form-group  col-md-3">
                                 <label class="control-label">Số lượng</label>
@@ -151,7 +148,7 @@
                                 @enderror
                                 <select class="form-control" name="category">
                                     @if ($categoryList)
-                                    <option>-- Chọn danh mục --</option>
+                                        <option>-- Chọn danh mục --</option>
                                         @foreach ($categoryList as $item)
                                             <option value="{{ $item->id }}"
                                                 {{ old('category') == $item->id || $productDetail->category_id == $item->id ? 'selected' : false }}>
@@ -162,12 +159,15 @@
                             </div>
                             <div class="form-group col-md-3 ">
                                 <label for="exampleSelect1" class="control-label">Nhà cung cấp</label>
-                                <select class="form-control" id="exampleSelect1">
-                                    <option>-- Chọn nhà cung cấp --</option>
-                                    <option>Phong vũ</option>
-                                    <option>Thế giới di động</option>
-                                    <option>FPT</option>
-                                    <option>Võ Trường</option>
+                                <select class="form-control" id="exampleSelect1" name="supplier">
+                                    @if ($supplier)
+                                        <option>-- Chọn danh mục --</option>
+                                        @foreach ($supplier as $item)
+                                            <option value="{{ $item->id }}"
+                                                {{ old('supplier') == $item->id || $productDetail->supplier_id == $item->id ? 'selected' : false }}>
+                                                {{ $item->name_supplier }}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
@@ -175,7 +175,9 @@
                                 @error('price')
                                     {{ $message }}
                                 @enderror
-                                <input class="form-control" value="{{ old('price') ?? $productDetail->quantity }}" name="price" type="text">
+                                <input class="form-control"
+                                    value="{{ old('price') ?? number_format($productDetail->price) }}" name="price"
+                                    type="text"> 
                             </div>
                             <div class="form-group col-md-3">
                                 <label class="control-label">Giá vốn</label>
@@ -184,10 +186,12 @@
                             <div class="form-group col-md-12">
                                 <label class="control-label">Ảnh sản phẩm</label>
                                 <div id="myfileupload">
-                                    <input type="file" id="uploadfile" value="{{ old('photo') ?? $productDetail->image }}" name="photo"
-                                        onchange="readURL(this);" accept="image/*"/>
-                                        <label for="oldImage">Ảnh hiện tại</label>
-                                        <img src="{{ old('photo') ?? $productDetail->image }}" name ="oldImage" alt="ảnh sản phẩm {{ $productDetail->name }}" width="120px" >
+                                    <input type="file" id="uploadfile"
+                                        value="{{ old('photo') ?? $productDetail->image }}" name="photo"
+                                        onchange="readURL(this);" accept="image/*" />
+                                    <label for="oldImage">Ảnh hiện tại</label>
+                                    <img src="{{ old('photo') ?? $productDetail->image }}" name="oldImage"
+                                        alt="ảnh sản phẩm {{ $productDetail->name }}" width="120px">
                                 </div>
                                 <div id="thumbbox">
                                     <img height="450" width="400" alt="Thumb image" id="thumbimage"
@@ -201,17 +205,57 @@
                                 </div>
 
                             </div>
+                            <div class="form-group">
+                                <label for="images" class=" mt-4">Cập nhật ảnh phụ </label>
+                                <label for="oldImage">- ảnh hiện tại</label>
+                                <div class="form-group">
+                                    <label for="images" class=" mt-4">Thêm ảnh phụ</label>
+                                    <input type="file" class="form-control" name="images[]" multiple accept="image/*"
+                                        id="images">
+                                </div>
+                                @foreach ($imageSub as $item)
+                                    <img src="{{ old('photo') ?? $item->image }}" name="oldImage"
+                                        alt="ảnh sản phẩm {{ $item->name }}" width="120px">
+                                    <a href="{{ route('admin.delete-image', ['imageId' => $item->id]) }}"
+                                        onclick="return confirm('Are you sure?')">Delete</a>
+                                @endforeach
+
+
+                            </div>
+
+                            <div id="preview-images"></div>
+
                             <div class="form-group col-md-12">
                                 <label class="control-label">Mô tả sản phẩm</label>
                                 @error('mota')
                                     {{ $message }}
                                 @enderror
-                                <textarea class="form-control"  name="mota" >{{ old('mota') ?? $productDetail->description }}</textarea>
-                               
+                                <textarea class="form-control" name="mota" id="desc">{{ old('mota') ?? $productDetail->description }}</textarea>
                                 <script>
                                     CKEDITOR.replace('mota');
                                 </script>
                             </div>
+                            <div class="form-group col-md-12">
+                                <label class="control-label">Lợi ích và ứng dụng</label>
+                                @error('beneficial')
+                                    {{ $message }}
+                                @enderror
+                                <textarea class="form-control" name="beneficial" id="desc">{{ old('beneficial') ?? $productDetail->beneficial }}</textarea>
+                                <script>
+                                    CKEDITOR.replace('beneficial');
+                                </script>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label class="control-label">Hướng dẫn sử dụng</label>
+                                @error('User_manual')
+                                    {{ $message }}
+                                @enderror
+                                <textarea class="form-control" name="User_manual" id="desc">{{ old('User_manual') ?? $productDetail->User_manual }}</textarea>
+                                <script>
+                                    CKEDITOR.replace('User_manual');
+                                </script>
+                            </div>
+
                     </div>
                     @csrf
                     <button class="btn btn-save">Lưu lại</button>
