@@ -5,9 +5,8 @@
     <div class="container">
         <nav class="biolife-nav">
             <ul>
-                <li class="nav-item"><a href="index-2.html" class="permal-link">Home</a></li>
-                <li class="nav-item"><a href="#" class="permal-link">Natural Organic</a></li>
-                <li class="nav-item"><span class="current-page">Fresh Fruit</span></li>
+                <li class="nav-item"><a href="{{ route('index') }}" class="permal-link">Home</a></li>
+                <li class="nav-item"><span class="current-page">Tất cả sản phẩm</span></li>
             </ul>
         </nav>
         <div class="hero-section hero-background">
@@ -36,7 +35,8 @@
                                     <li class="product-item">
                                         <div class="contain-product layout-02">
                                             <div class="product-thumb" style="width: 270 px; height: 270 px">
-                                                <a href="http://127.0.0.1:8000/shop/detail_product" class="link-to-product">
+                                                <a href="{{ route('shop.chi-tiet-san-pham', $value->id) }}"
+                                                    class="link-to-product">
                                                     <img src="{{ $value->image }}" alt="dd" width="270px"
                                                         height="270px" class="product-thumnail">
                                                 </a>
@@ -44,7 +44,7 @@
                                             <div class="info">
                                                 <b class="categories">Fresh Fruit 1</b>
                                                 <h4 class="product-title"><a
-                                                        href="http://127.0.0.1:8000/shop/detail_product"
+                                                        href="{{ route('shop.chi-tiet-san-pham', $value->id) }}"
                                                         class="pr-name">National Fresh Fruit</a>
                                                 </h4>
                                                 <div class="price">
@@ -138,7 +138,8 @@
                                                 </div>
                                                 <div class="info">
                                                     <b class="categories">{{ $value->category_name }}</b>
-                                                    <h4 class="product-title"><a href="#"
+                                                    <h4 class="product-title"><a
+                                                            href="{{ route('shop.chi-tiet-san-pham', $value->id) }}"
                                                             class="pr-name">{{ $value->name }}</a></h4>
                                                     <div class="price">
                                                         <ins><span class="price-amount"><span
@@ -153,20 +154,18 @@
                                                         <p class="for-today">Pree Pickup Today</p>
                                                     </div>
                                                     <div class="slide-down-box">
-                                                        <p class="message">{{ Str::limit($value->description, 100, '...')  }}</p>
-
-
-
+                                                        <p class="message">
+                                                            {{ Str::limit($value->description, 100, '...') }}</p>
                                                         <input type="hidden" value="{{ $value->id }}" name="id">
                                                         <input type="hidden" value="{{ $value->name }}" name="name">
                                                         <input type="hidden" value="{{ $value->price }}" name="price">
-                                                        <input type="hidden" value="{{ $value->image }}"
-                                                            name="image">
+                                                        <input type="hidden" value="{{ $value->image }}" name="image">
                                                         <input type="hidden" value="1" name="quantity">
                                                         <div class="d-flex justify-content-center">
 
-                                                            <a href="{{ route('shop.add-to-cart',['id' => $value->id]) }}" class="btn btn-success pull-right"
-                                                                role="button">Thêm vào giở hàng</a>
+                                                            <a href="{{ route('shop.add-to-cart', ['id' => $value->id]) }}"
+                                                                class="btn btn-success pull-right" role="button">Thêm vào
+                                                                giở hàng</a>
                                                         </div>
 
 

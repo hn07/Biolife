@@ -15,36 +15,7 @@ use App\Http\Controllers\SupplierNewController;
 use Illuminate\Support\Facades\Route;
 
 
-
-Route::get('/', [FrontendController::class, 'index'])->name('index');
-Route::get('/about', [UserController::class, 'about']);
-Route::get('/shop', [UserController::class, 'shop']);
-Route::prefix('shop')->group(
-    function () {
-        Route::get('/detail_product', [UserController::class, 'detail_product']);
-    }
-);
-Route::get('/blog', [UserController::class, 'blog']);
-Route::prefix('/blog')->group(
-    function () {
-        Route::get('/blog-post', [UserController::class, 'blog_post']);
-    }
-);
-Route::get('/contact', [UserController::class, 'contact']);
-Route::get('/login', [UserController::class, 'login']);
-Route::get('/register', [UserController::class, 'register']);
-Route::get('/shopping-cart', [UserController::class, 'shopping_cart']);
-Route::prefix('shopping-cart')->group(
-    function () {
-        Route::get('check-out', [UserController::class, 'checkout']);
-    }
-);
-
-
-
-
-
-// ----- USER
+// ----- USER Bản demo
 Route::prefix('users')->name('users.')->group(
     function () {
         Route::get('/', [UserController::class, 'index'])->name('index');
@@ -57,19 +28,71 @@ Route::prefix('users')->name('users.')->group(
     }
 );
 
+//====== Trang chủ
+Route::get('/', [FrontendController::class, 'index'])->name('index');
+
+//====== Trang giới thiệu
+Route::get('/about', [UserController::class, 'about']);
+
+//====== Trang tất cả sản phẩm
+Route::get('/shop', [UserController::class, 'shop']);
+Route::prefix('shop')->group(
+    function () {
+        Route::get('/detail_product', [UserController::class, 'detail_product']);
+    }
+);
+
+//====== Trang tin tức
+Route::get('/blog', [UserController::class, 'blog']);
+Route::prefix('/blog')->group(
+    function () {
+        Route::get('/blog-post', [UserController::class, 'blog_post']);
+    }
+);
+
+//====== Trang liên hệ
+Route::get('/contact', [UserController::class, 'contact']);
+
+//====== Trang đăng nhập
+Route::get('/login', [UserController::class, 'login']);
+Route::get('/register', [UserController::class, 'register']);
+
+//====== Trang giỏ hàng
+Route::get('/shopping-cart', [UserController::class, 'shopping_cart']);
+Route::prefix('shopping-cart')->group(
+    function () {
+        Route::get('check-out', [UserController::class, 'checkout']);
+    }
+);
+
+
+// ----------------------------------------------------------------
 Route::prefix('shop')->name('shop.')->group(
     function () {
-        //===== Đăng ký 
+        //===== Liệt kê tất cả sản phẩm
         Route::get('/tat-ca-san-pham', [ProductsController::class, 'allProduct'])->name('tat-ca-san-pham');
+
+        //===== Chi tiết sản phẩm
         Route::get('/chi-tiet-san-pham/{id}', [ProductsController::class, 'detailProduct'])->name('chi-tiet-san-pham')->middleware('isLoggedInCustomer');
+
+        //===== Giỏ hàng
         Route::get('/shopping-cart', [CartController::class, 'shopping_cart'])->name('shopping-cart')->middleware('isLoggedInCustomer');
+
+        //===== Thêm sản phẩm vào giỏ hàng
         Route::get('/add-to-cart/{id}', [CartController::class, 'add'])->name('add-to-cart')->middleware('isLoggedInCustomer');
+        Route::post('/add-to-cart/{id}', [CartController::class, 'add_product'])->name('add-to-cart-post')->middleware('isLoggedInCustomer');
+
+        //===== Xoá giỏ hàng
         Route::get('/delete-cart/{id}', [CartController::class, 'delete'])->name('delete-cart');
         Route::get('/delete-all-cart', [CartController::class, 'delete_all_cart'])->name('delete-all-cart');
+
+        //===== Update giỏ hành
         Route::get('/update-cart', [CartController::class, 'update_cart'])->name('update-cart');
     }
 );
 
+
+//===== Thanh toán
 Route::prefix('checkout')->name('checkout.')->group(
     function () {
         Route::get('/', [CheckOutController::class, 'indexAction'])->name('index');
@@ -77,11 +100,15 @@ Route::prefix('checkout')->name('checkout.')->group(
     }
 );
 
+
+//===== Xác nhận đơn hàng
 Route::prefix('order')->name('order.')->group(
     function () {
         Route::get('accept-order/{order}/{token}', [CheckOutController::class, 'accept'])->name('accept-order');
     }
 );
+
+//----------------------------------------------------------------
 
 
 //----- Auth User Controller 

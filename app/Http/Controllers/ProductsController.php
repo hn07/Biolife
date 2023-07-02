@@ -316,8 +316,17 @@ class ProductsController extends Controller
     }
     public function detailProduct(Request $request, $id)
     {
-        $categoryList = Categories::all();
+        $carts = Cart::content();
+        
         $products = Products::all();
+        $productId = Products::find($id);
+        
+        $imageSub = $productId->images;
+
+        $categoryId = $productId->category_id;
+        $categoryName = Categories::where('id', $categoryId)->get();
+
+        $productCategoryList = Products::where('category_id', $categoryId)->get();
 
         if (!empty($id)) {
             $productDetail =  $this->product->getDetail($id);
@@ -331,7 +340,7 @@ class ProductsController extends Controller
         } else {
             return redirect()->route('admin.table-data-product')->with('error', 'Đường link không tồn tại');
         }
-        return view('Frontend.Pages.detail-product', compact('productDetail', 'products', 'categoryList'));
+        return view('Frontend.Pages.detail-product', compact('carts','productDetail', 'products', 'categoryName','imageSub','productCategoryList'));
     }
 
     public function cart()

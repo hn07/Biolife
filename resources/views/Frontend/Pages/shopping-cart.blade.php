@@ -43,7 +43,15 @@
                     </ul>
 
                 </div>
-
+                @if (Session::has('checkmail'))
+                    <div class="alert alert-success">{{ Session::get('checkmail') }} <a class="text-bold text-warning text-xl-right" href="https://mail.google.com/">email</a> để xác nhận đơn hàng!</div>
+                @endif
+                @if (Session::has('success'))
+                    <div class="alert alert-success">{{ Session::get('success') }}</div>
+                @endif
+                @if (Session::has('error'))
+                    <div class="alert alert-danger">{{ Session::get('error') }}</div>
+                @endif
                 <!--Cart Table-->
                 <div class="shopping-cart-container">
                     <div class="row">
@@ -51,92 +59,93 @@
                             <h3 class="box-title">Your cart items</h3>
                             <form class="shopping-cart-form" action="#" method="post">
                                 <table class="shop_table cart-form">
-                                    <thead>
-                                        <tr>
-                                            <th class="product-name">Tên Sản Phẩm</th>
-                                            <th class="product-price">Giá</th>
-                                            <th class="product-quantity">Số lượng</th>
-                                            <th class="product-subtotal">Tổng</th>
-                                            <th class="product-subtotal">Tùy chỉnh</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @if (Cart::count() == 0)
+                                    @if (Cart::count() != 0)
+                                        <thead>
+                                            <tr>
+                                                <th class="product-name">Tên Sản Phẩm</th>
+                                                <th class="product-price">Giá</th>
+                                                <th class="product-quantity">Số lượng</th>
+                                                <th class="product-subtotal">Tổng</th>
+                                                <th class="product-subtotal">Tùy chỉnh</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($carts as $cart)
+                                                <tr class="cart_item">
+                                                    <td class="product-thumbnail" data-title="Product Name">
+                                                        <a class="prd-thumb" href="#">
+                                                            <figure><img width="113" height="113"
+                                                                    src="{{ $cart->options->image }}" alt="shipping cart">
+                                                            </figure>
+                                                        </a>
+                                                        <a class="prd-name" href="#">{{ $cart->name }}</a>
+
+                                                    </td>
+                                                    <td class="product-price" data-title="Price">
+                                                        <div class="price price-contain">
+                                                            <ins><span class="price-amount">
+                                                                    {{ number_format($cart->price) }}
+                                                                    vnđ</span></ins>
+                                                            <del><span class="price-amount"><span
+                                                                        class="currencySymbol">{{ number_format($cart->price * 1.2) }}</span>vnđ</span></del>
+                                                        </div>
+                                                    </td>
+
+                                                    @csrf
+
+                                                    <td class="product-quantity" data-title="Quantity">
+                                                        <div class="quantity-box type1">
+                                                            <div class="qty-input pro-qty">
+                                                                <input type="text" name="qty12554"
+                                                                    value="{{ $cart->qty }}" min="1"
+                                                                    max="20" data-rowid="{{ $cart->rowId }}">
+
+                                                                <a href="" class="qty-btn btn-up inc"><i
+                                                                        class="fa fa-caret-up" aria-hidden="true"></i></a>
+                                                                <a href="#" class="qty-btn btn-down dec"><i
+                                                                        class="fa fa-caret-down" aria-hidden="true"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="product-subtotal" data-title="Total">
+                                                        <div class="price price-contain">
+                                                            <ins><span class="price-amount">
+                                                                    {{ number_format($cart->price * $cart->qty) }}
+                                                                    vnđ</span></ins>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="action">
+
+                                                            <a href="{{ route('shop.delete-cart', ['id' => $cart->rowId]) }}"
+                                                                class="remove"><i
+                                                                    class="fa-solid fa-trash-can fa-flip-horizontal fa-xl"></i></a>
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                            @endforeach
+                                        @elseif (Cart::count() == 0)
                                             <tr class="cart_item">
                                                 <td colspan="5" class="product-thumbnail" data-title="Product Name">
                                                     <h4 class="prd-name" href="#">Không có sản phẩm nào trong giỏ
                                                         hàng</h4>
                                                 </td>
-                                            @else
-                                                @foreach ($carts as $cart)
-                                            <tr class="cart_item">
-                                                <td class="product-thumbnail" data-title="Product Name">
-                                                    <a class="prd-thumb" href="#">
-                                                        <figure><img width="113" height="113"
-                                                                src="{{ $cart->options->image }}" alt="shipping cart">
-                                                        </figure>
-                                                    </a>
-                                                    <a class="prd-name" href="#">{{ $cart->name }}</a>
-
-                                                </td>
-                                                <td class="product-price" data-title="Price">
-                                                    <div class="price price-contain">
-                                                        <ins><span class="price-amount">
-                                                                {{ number_format($cart->price) }}
-                                                                vnđ</span></ins>
-                                                        <del><span class="price-amount"><span
-                                                                    class="currencySymbol">{{ number_format($cart->price * 1.2) }}</span>vnđ</span></del>
-                                                    </div>
-                                                </td>
-
-                                                @csrf
-
-                                                <td class="product-quantity" data-title="Quantity">
-                                                    <div class="quantity-box type1">
-                                                        <div class="qty-input pro-qty">
-                                                            <input type="text" name="qty12554"
-                                                                value="{{ $cart->qty }}" min="1" max="20"
-                                                                data-rowid="{{ $cart->rowId }}">
-
-                                                            <a href="" class="qty-btn btn-up inc"><i
-                                                                    class="fa fa-caret-up" aria-hidden="true"></i></a>
-                                                            <a href="#" class="qty-btn btn-down dec"><i
-                                                                    class="fa fa-caret-down" aria-hidden="true"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="product-subtotal" data-title="Total">
-                                                    <div class="price price-contain">
-                                                        <ins><span class="price-amount">
-                                                                {{ number_format($cart->price * $cart->qty) }}
-                                                                vnđ</span></ins>
-
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="action">
-
-                                                        <a href="{{ route('shop.delete-cart', ['id' => $cart->rowId]) }}"
-                                                            class="remove"><i
-                                                                class="fa-solid fa-trash-can fa-flip-horizontal fa-xl"></i></a>
-                                                    </div>
-                                                </td>
-
                                             </tr>
-                                        @endforeach
-                                        @endif
-                                        <tr class="cart_item wrap-buttons">
-                                            <td class="wrap-btn-control" colspan="4">
-                                                <a href="{{ route('shop.tat-ca-san-pham') }}" class="btn back-to-shop">Back
-                                                    to Shop</a>
+                                    @endif
+                                    <tr class="cart_item wrap-buttons">
+                                        <td class="wrap-btn-control" colspan="4">
+                                            <a href="{{ route('shop.tat-ca-san-pham') }}" class="btn back-to-shop">Back
+                                                to Shop</a>
 
-                                                @if (Cart::count() > 0)
-                                                    <button class="btn btn-clear" type="reset"> <a style="color: brown"
-                                                            onclick="confirmDelete()" class="remove">xóa giỏ
-                                                            hàng</a></button>
-                                                @endif
-                                            </td>
-                                        </tr>
+                                            @if (Cart::count() > 0)
+                                                <button class="btn btn-clear" type="reset"> <a style="color: brown"
+                                                        onclick="confirmDelete()" class="remove">xóa giỏ
+                                                        hàng</a></button>
+                                            @endif
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </form>
@@ -155,29 +164,6 @@
                                         <a href="{{ route('checkout.index') }}" class="btn checkout">Check
                                             out</a>
                                     </div>
-                                    <div class="biolife-progress-bar">
-                                        <table>
-                                            <tr>
-                                                <td class="first-position">
-                                                    <span class="index">$0</span>
-                                                </td>
-                                                <td class="mid-position">
-                                                    <div class="progress">
-                                                        <div class="progress-bar" role="progressbar" style="width: 25%"
-                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="last-position">
-                                                    <span class="index">$99</span>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                    <p class="pickup-info"><b>Free Pickup</b> is available as soon as today More about
-                                        shipping
-                                        and pickup</p>
-                                </div>
                             @endif
                         </div>
                     </div>
@@ -422,4 +408,27 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        function checkmail() {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'success',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                }
+            })
+        }
+    </script>
 @endsection

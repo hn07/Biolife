@@ -57,7 +57,7 @@ class CheckOutController extends Controller
             Cart::destroy();
 
             //tra ve ket qua
-            return redirect()->route('shop.shopping-cart')->with('success', 'Đặt hàng thành công');
+            return redirect()->route('shop.shopping-cart')->with('checkmail', 'Đặt hàng thành công, vui lòng kiểm tra ');
         } else {
             return 'Thanh toán online không được hỗ trợ.';
         }

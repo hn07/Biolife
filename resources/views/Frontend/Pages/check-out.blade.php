@@ -255,4 +255,25 @@
 @section('scripts')
     <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
     <script src="{{ asset('frontend/assets/js/checkout.js') }}"></script>
+    <script>
+        function checkmail() {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'success',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                }
+            })
+        }
+    </script>
 @endsection
