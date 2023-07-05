@@ -1,16 +1,5 @@
 @extends('Frontend.Layouts.main')
 @section('main-content')
-    <!--Navigation section-->
-    <div class="container">
-        <nav class="biolife-nav">
-            <ul>
-                <li class="nav-item"><a href="{{ route('authentication.index') }}" class="permal-link">Home</a></li>
-                <li class="nav-item"><a href="{{ route('authentication.index') }}" class="permal-link">Authentication</a></li>
-                <li class="nav-item"><span class="current-page">Register</span></li>
-            </ul>
-        </nav>
-    </div>
-
     <div class="page-contain login-page">
 
         <!-- Main content -->
@@ -130,7 +119,8 @@
 
                                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                                         @csrf
-                                                        <button class="btn btn-primary btn-lg">Register</button>
+                                                        <button class="btn btn-primary btn-lg">Đăng ký</button>
+                                                        <a href="{{ route('authentication.index') }}" class="btn btn-dark btn-lg ml-3">Đăng nhập</a>
                                                     </div>
 
                                                 </form>

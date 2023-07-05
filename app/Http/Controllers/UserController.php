@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Users;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
@@ -176,7 +177,9 @@ class UserController extends Controller
 
     public function about()
     {
-        return view('Frontend.Pages.about-us');
+        $carts = Cart::content();
+
+        return view('Frontend.Pages.about-us',compact('carts'));
     }
 
     public function shop()
@@ -188,14 +191,7 @@ class UserController extends Controller
         return view('Frontend.Pages.detail-product');
     }
 
-    public function blog()
-    {
-        return view('Frontend.Pages.blog');
-    }
-    public function blog_post()
-    {
-        return view('Frontend.Pages.blog-post');
-    }
+
     public function contact()
     {
         // $users = DB::select('SELECT * FROM tbl_users WHERE name_user =:name_user',['name_user' =>'THANH DŨNG']);

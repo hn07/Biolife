@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Products;
 
-use App\Models\CartsDB;
 use App\Models\Customer;
 
 use Illuminate\Support\Facades\Auth;
@@ -20,27 +19,22 @@ use Illuminate\Support\Str;
 
 class CartController extends Controller
 {
-    private $carts;
-    public function __construct(CartsDB $carts)
-    {
-        $this->carts = $carts;
-    }
+
     const _PER_PAGE = 5;
 
     public function add(Request $request, $id)
     {
         $product = Products::findorFail($id);
-        $customer = Customer::findorFail($id);
         Cart::add([
             'id' => $product->id,
             'name' => $product->name,
-            'qty' => 1,
+            'qty' => $request->qty ?? 1,
             'price' => $product->discount ?? $product->price,
             'weight' => 0,
             'options' => [
                 'image' => $product->image,
             ],
-            'user_id' => $customer->id,
+           
             
         ]);       
         return back();

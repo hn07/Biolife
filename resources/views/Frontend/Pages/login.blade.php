@@ -5,7 +5,7 @@
         <nav class="biolife-nav">
             <ul>
                 <li class="nav-item"><a href="{{ route('authentication.index') }}" class="permal-link">Home</a></li>
-                <li class="nav-item"><span class="current-page">Authentication</span></li>
+                <li class="nav-item"><span class="current-page">Đăng nhập</span></li>
             </ul>
         </nav>
     </div>
@@ -19,12 +19,7 @@
                 <div class="row">
                     <!--Form Sign In-->
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="signin-container">
-                            @if (Session::has('error'))
-                                <div class="alert alert-danger" role="alert">
-                                    {{ Session::get('error') }}
-                                </div>
-                            @endif
+                        <div class="signin-container">                            
                             <form action="{{ route('authentication.loginPost') }}" method="POST" name="frm-login">
                                 @if (Session::has('success'))
                                 <div class="alert alert-success">{{ Session::get('success') }}</div>
@@ -53,7 +48,7 @@
                                 <p class="form-row wrap-btn">
                                     @csrf
                                     <button class="btn btn-submit btn-bold" type="submit">đăng nhập</button>
-                                    <a href="#" class="link-to-help">Forgot your password</a>
+                                    <a href="{{ route('authentication.forgot-password') }}" class="link-to-help">Forgot your password</a>
                                 </p>
                             </form>
                         </div>
@@ -84,4 +79,26 @@
         </div>
 
     </div>
+@endsection
+@section('scripts')
+<script>
+    @if(session('success'))
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: '{{ session('success') }}',
+        showConfirmButton: false,
+        timer: 3500
+      });
+    @endif
+    @if(session('error'))
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: '{{ session('error') }}',
+        showConfirmButton: false,
+        timer: 3500
+      });
+    @endif
+  </script>
 @endsection

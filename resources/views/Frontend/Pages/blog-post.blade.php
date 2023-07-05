@@ -15,52 +15,34 @@
 
                         <div class="post-head">
                             <div class="thumbnail">
-                                <figure><img src="{{ asset('frontend/assets/images/blogpost/post_thumbnail.jpg') }}" width="870" height="635" alt=""></figure>
+                                <figure><img src="{{ $news->image_news }}" width="870" height="635" alt=""></figure>
                             </div>
-                            <h2 class="post-name">Ashwagandha: Loại thảo mộc số 1 trên thế giới cho chứng lo âu?</h2>
-                            <p class="post-archive"><b class="post-cat">ORGANIC</b><span class="post-date"> / 20 Nov, 2018</span><span class="author">Posted By: Braum J.Teran</span></p>
+                            <h2 class="post-name">{{ $news->title }}</h2>
+                            <p class="post-archive"><b class="post-cat">Ngày đăng</b><span class="post-date"> : {{ $news->updated_at }}</span><span class="author">Posted By: {{ $news->author }}</span></p>
                         </div>
 
                         <div class="post-content">
-                            <p>Bạn đang cảm thấy lo âu và căng thẳng quá mức? Bạn muốn tìm một giải pháp tự nhiên để giảm bớt cảm giác lo lắng? Hãy tìm hiểu về loại thảo mộc số 1 trên thế giới cho chứng lo âu.</p>
-                            <p>Đó là thảo dược gọi là Ashwagandha, còn được gọi là Withania somnifera. Ashwagandha là một loại cây thuộc họ cà phê, được tìm thấy ở Ấn Độ và Trung Quốc. Nó đã được sử dụng trong y học truyền thống Ấn Độ hàng nghìn năm để giảm căng thẳng và lo lắng.</p>
-                            <p>Ashwagandha có tác dụng làm giảm cortisol, một hormone stress được sản xuất trong cơ thể. Khi cortisol được sản xuất quá nhiều, nó có thể gây ra cácvấn đề sức khỏe như lo âu, mất ngủ và suy giảm tâm trạng. Tuy nhiên, nghiên cứu đã chỉ ra rằng Ashwagandha có thể giúp giảm cortisol và cải thiện các triệu chứng lo âu</p>
-                            <p>Ngoài ra, Ashwagandha còn có khả năng giúp cân bằng serotonin, một chất dẫn truyền trong não giúp cải thiện tâm trạng và giảm căng thẳng. Do đó, việc sử dụng Ashwagandha có thể giúp giảm các triệu chứng lo âu, giúp bạn cảm thấy thư giãn hơn và tập trung hơn trong công việc và cuộc sống.</p>
-                            <p>Ashwagandha có thể được sử dụng dưới dạng viên nang hoặc bột, và có thể được dùng như một loại thực phẩm chức năng. Tuy nhiên, nếu bạn đang dùng thuốc hoặc có bất kỳ vấn đề sức khỏe nào, hãy tham khảo ý kiến của bác sĩ trước khi sử dụng bất kỳ loại thảo dược nào.
-                                Nếu bạn đang tìm kiếm một giải pháp tự nhiên để giảm cảm giác lo lắng, hãy thử sử dụng Ashwagandha - loại thảo mộc số 1 trên thế giới cho chứng lo âu. Đây là một giải pháp tự nhiên và an toàn để giúp bạn cảm thấy thư giãn hơn và tập trung hơn trong cuộc sống. Tuy nhiên, hãy nhớ luôn tham khảo ý kiến của bác sĩ trước khi sử dụng bất kỳ loại thảo dược nào để đảm bảo an toàn và hiệu quả trong sức khỏe của bạn.</p>
-                            <blockquote>
-                                <p>Maecenas vel nulla eleifend, euismod magna sed, tristique velit. Nam sed eleifend dui, eu eleifend leo. Mauris ornare eros quis placerat mollis. Duis ornare euismod risus at dictum. Proin at porttitor metus. Nunc luctus nisl suscipit, hendrerit ligula non, mattis dolor.</p>
+                            <p>{{ $news->content }}</p>
+                           <blockquote>
+                                <p>{{ $news->quote }}</p>
                                 <address>
-                                    <a href="#" class="author">Koan Conella</a>
-                                    <span>Creative Copywriter</span>
+                                    <a href="#" class="author">Tác giả</a>
+                                    <span>{{ $news->author }}</span>
                                 </address>
                             </blockquote>
                         </div>
 
                         <div class="post-foot">
-
-                            <div class="post-tags">
-                                <span class="tag-title">Tags:</span>
-                                <ul class="tags">
-                                    <li><a href="#" class="tag-link">Juice Drink</a></li>
-                                    <li><a href="#" class="tag-link">Fast Food</a></li>
-                                    <li><a href="#" class="tag-link">Fresh Food</a></li>
-                                    <li><a href="#" class="tag-link">Hot</a></li>
-                                    <li><a href="#" class="tag-link">Backpack</a></li>
-                                    <li><a href="#" class="tag-link">Grooming</a></li>
-                                </ul>
-                            </div>
-
                             <div class="auth-info">                
                                 <div class="socials-connection">
                                     <span class="title">Share:</span>
                                     <ul class="social-list">
-                                        <li><a href="#" class="socail-link"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                        <li><a href="#" class="socail-link"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                        <li><a href="#" class="socail-link"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                        <li><a href="#" class="socail-link"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
-                                        <li><a href="#" class="socail-link"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                                    </ul>
+                                        <li><a href="#" class="socail-link"><i class="fa-brands fa-twitter"></i></a></li>
+                                        <li><a href="#" class="socail-link"><i class="fa-brands fa-facebook"></i></a></li>
+                                        <li><a href="#" class="socail-link"><i class="fa-brands fa-pinterest"></i></a></li>
+                                        <li><a href="#" class="socail-link"><i class="fa-brands fa-youtube"></i></a></li>
+                                        <li><a href="#" class="socail-link"><i class="fa-brands fa-instagram"></i></a></li>
+                                       </ul>
                                 </div>
                             </div>
 

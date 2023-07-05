@@ -10,7 +10,7 @@
             </ul>
         </nav>
         <div class="hero-section hero-background">
-            <h1 class="page-title">Organic Fruits</h1>
+            <h1 class="page-title">Chất lượng làm nên thương hiệu!</h1>
         </div>
         @if (Session::has('success'))
             <div class="alert alert-success">{{ Session::get('success') }}</div>
@@ -42,16 +42,16 @@
                                                 </a>
                                             </div>
                                             <div class="info">
-                                                <b class="categories">Fresh Fruit 1</b>
+                                                
                                                 <h4 class="product-title"><a
                                                         href="{{ route('shop.chi-tiet-san-pham', $value->id) }}"
-                                                        class="pr-name">National Fresh Fruit</a>
+                                                        class="pr-name">{{ $value->name }}</a>
                                                 </h4>
                                                 <div class="price">
                                                     <ins><span class="price-amount"><span
-                                                                class="currencySymbol">£</span>85.00</span></ins>
+                                                                class="currencySymbol">{{ number_format($value->price) }}</span> vnđ</span></ins>
                                                     <del><span class="price-amount"><span
-                                                                class="currencySymbol">£</span>95.00</span></del>
+                                                                class="currencySymbol">{{ number_format($value->price*1.2) }}</span> vnđ</span></del>
                                                 </div>
                                             </div>
                                         </div>

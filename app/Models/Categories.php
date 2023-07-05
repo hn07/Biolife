@@ -22,7 +22,11 @@ class Categories extends Model
         return $this->hasMany(Products::class);
     }
     protected $table = 'categories';
-
+    function categoryNews()
+    {
+        return $this->belongsTo(Category::class, 'name_category', 'id');
+        //foreign_key //local_key
+    }
     public function getAll(){
         $category = DB::table($this->table)
         ->orderBy('created_at','desc')
@@ -40,5 +44,12 @@ class Categories extends Model
             ->where('id', $id)
             ->get();
         return $getDetail;
+    }
+    public function getCategory($id)
+    {
+        $getCategory = DB::table($this->table)
+            ->where('id', $id)
+            ->get();
+        return $getCategory;
     }
 }

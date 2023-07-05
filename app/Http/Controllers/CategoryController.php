@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Products;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\Categories;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -15,6 +18,7 @@ use Illuminate\Support\Str;
 class CategoryController extends Controller
 {
     private $category;
+    const _PER_PAGE = 2;
     public function __construct()
     {
         $this->category = new Categories();
@@ -38,7 +42,7 @@ class CategoryController extends Controller
         }
     }
 
-    public function delete_danh_muc(Request $request, $id = 0)
+    public function delete_danh_muc( $id = 0)
     {
         if (!empty($id)) {
             $categoryDetail =  $this->category->getDetail($id);
@@ -58,5 +62,12 @@ class CategoryController extends Controller
         }
 
         return back()->with('msg', $msg);
+    }
+
+    public function category_getId($id){
+        $carts = Cart::content();
+        $category_product = Products::where('category_id', $id)->paginate(self::_PER_PAGE)->withQueryString(); //lấy ra tất cả sản phẩm có category_id = $id
+
+        return view('Frontend.Pages.category-page', compact('category_product','carts'));
     }
 }

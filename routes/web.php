@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthControllerUser;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\NewsCustomerController;
 use App\Http\Controllers\CategoryNewsController;
 use App\Http\Controllers\StatusNewsController;
 use App\Http\Controllers\CartController;
@@ -27,6 +28,18 @@ Route::prefix('users')->name('users.')->group(
         Route::get('/testphp', [UserController::class, 'testphp'])->name('testphp');
     }
 );
+//====== Trang đăng nhập
+Route::get('/login', [UserController::class, 'login']);
+Route::get('/register', [UserController::class, 'register']);
+
+//====== Trang giỏ hàng
+Route::get('/shopping-cart', [UserController::class, 'shopping_cart']);
+Route::prefix('shopping-cart')->group(
+    function () {
+        Route::get('check-out', [UserController::class, 'checkout']);
+    }
+);
+// ------------------------------------------------------------------------------
 
 //====== Trang chủ
 Route::get('/', [FrontendController::class, 'index'])->name('index');
@@ -42,28 +55,22 @@ Route::prefix('shop')->group(
     }
 );
 
+//====== Trang danh mục sản phẩm
+Route::prefix('/category')->name('category.')->group(function () {
+    Route::get('/category-get/{id}', [CategoryController::class, 'category_getId'])->name('category-get');
+});
+
 //====== Trang tin tức
-Route::get('/blog', [UserController::class, 'blog']);
-Route::prefix('/blog')->group(
-    function () {
-        Route::get('/blog-post', [UserController::class, 'blog_post']);
-    }
-);
+Route::get('/blog', [NewsCustomerController::class, 'blog']);
+Route::prefix('/blogs')->group(function () {
+    Route::get('/blog-post/{id}', [NewsCustomerController::class, 'blog_post'])->name('blog-post');
+});
+
 
 //====== Trang liên hệ
 Route::get('/contact', [UserController::class, 'contact']);
 
-//====== Trang đăng nhập
-Route::get('/login', [UserController::class, 'login']);
-Route::get('/register', [UserController::class, 'register']);
 
-//====== Trang giỏ hàng
-Route::get('/shopping-cart', [UserController::class, 'shopping_cart']);
-Route::prefix('shopping-cart')->group(
-    function () {
-        Route::get('check-out', [UserController::class, 'checkout']);
-    }
-);
 
 
 // ----------------------------------------------------------------
@@ -126,9 +133,33 @@ Route::prefix('authentication')->name('authentication.')->group(
         //===== Trang chủ
         Route::get('/dashboard', [AuthControllerUser::class, 'dashboard'])->name('dashboard')->middleware('isLoggedInCustomer');
 
-
         //===== Đăng xuất 
         Route::get('/logout', [AuthControllerUser::class, 'logout'])->name('logout');
+
+        //===== Quên mật khẩu
+        Route::get('/forgot-password', [AuthControllerUser::class, 'forgotPassword'])->name('forgot-password');
+        Route::post('/forgot-password', [AuthControllerUser::class, 'forgotPasswordPost'])->name('forgot-password-post');
+        Route::get('/get-password/{customer}/{token}', [AuthControllerUser::class, 'getPassword'])->name('get-password');
+        Route::post('/post-password/{customer}/{token}', [AuthControllerUser::class, 'getPasswordPost'])->name('post-password');
+
+
+
+        //===== Đổi mật khẩu
+        Route::get('/change-password', [AuthControllerUser::class, 'changePassword'])->name('change-password');
+        Route::post('/change-password', [AuthControllerUser::class, 'changePasswordPost'])->name('change-password-post');
+      
+
+        //===== Cập nhật thông tin
+        Route::get('/update-info', [AuthControllerUser::class, 'updateCustomer'])->name('update-info')->middleware('isLoggedInCustomer');
+
+        //===== Xác nhận email
+
+
+        //===== Xác nhận đăng nhập
+
+
+        //===== Xác nhận đăng ký
+
     }
 );
 

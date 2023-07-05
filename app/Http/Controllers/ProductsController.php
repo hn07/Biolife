@@ -249,7 +249,7 @@ class ProductsController extends Controller
         return view('Frontend.Pages_Admin.data-product', compact('delete_msg'));
     }
 
-    // ===== CUSTOMER
+    // ===== CUSTOMER =================================================
     public function allProduct(Request $request)
     {
 
@@ -311,8 +311,8 @@ class ProductsController extends Controller
         $oldCart = Session::get('orders');
         $cart = new Cart($oldCart);
         $carts = Cart::content();
-
-        return view('Frontend.Pages.shop', compact('product', 'list_product', 'sortType', 'carts'));
+        $categories = Categories::all();
+        return view('Frontend.Pages.shop', compact('product', 'list_product', 'sortType', 'carts', 'categories'));
     }
     public function detailProduct(Request $request, $id)
     {
