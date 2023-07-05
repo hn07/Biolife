@@ -6,7 +6,7 @@
             <ul>
                 <li class="nav-item"><a href="{{ route('index') }}" class="permal-link">Home</a></li>
                 <li class="nav-item"><a href="{{ route('shop.tat-ca-san-pham') }}" class="permal-link">Shop</a></li>
-                <li class="nav-item"><span class="current-page">{{ $productDetail->name }}</span></li>
+                <li class="nav-item"><span class="current-page">{{ Str::limit($productDetail->name,10,'..') }}</span></li>
             </ul>
         </nav>
     </div>

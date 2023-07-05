@@ -34,7 +34,7 @@
                                 @foreach ($product as $product => $value)
                                     <li class="product-item">
                                         <div class="contain-product layout-02">
-                                            <div class="product-thumb" style="width: 270 px; height: 270 px">
+                                            <div class="product-thumb product-thumnail-cover" style="width: 270 px; height: 270 px">
                                                 <a href="{{ route('shop.chi-tiet-san-pham', $value->id) }}"
                                                     class="link-to-product">
                                                     <img src="{{ $value->image }}" alt="dd" width="270px"
@@ -42,16 +42,18 @@
                                                 </a>
                                             </div>
                                             <div class="info">
-                                                
+
                                                 <h4 class="product-title"><a
                                                         href="{{ route('shop.chi-tiet-san-pham', $value->id) }}"
                                                         class="pr-name">{{ $value->name }}</a>
                                                 </h4>
                                                 <div class="price">
                                                     <ins><span class="price-amount"><span
-                                                                class="currencySymbol">{{ number_format($value->price) }}</span> vnđ</span></ins>
+                                                                class="currencySymbol">{{ number_format($value->price) }}</span>
+                                                            vnđ</span></ins>
                                                     <del><span class="price-amount"><span
-                                                                class="currencySymbol">{{ number_format($value->price*1.2) }}</span> vnđ</span></del>
+                                                                class="currencySymbol">{{ number_format($value->price * 1.2) }}</span>
+                                                            vnđ</span></del>
                                                 </div>
                                             </div>
                                         </div>
@@ -129,11 +131,11 @@
                                     @foreach ($list_product as $product => $value)
                                         <li class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                                             <div class="contain-product layout-default">
-                                                <div class="product-thumb">
+                                                <div  class="product-thumb product-thumnail-cover">
                                                     <a href="{{ route('shop.chi-tiet-san-pham', $value->id) }}"
                                                         class="link-to-product">
                                                         <img src="{{ $value->image }}" alt="dd" width="270"
-                                                            height="270" class="product-thumnail">
+                                                            height="270"  class="product-thumnail">
                                                     </a>
                                                 </div>
                                                 <div class="info">
@@ -156,19 +158,13 @@
                                                     <div class="slide-down-box">
                                                         <p class="message">
                                                             {{ Str::limit($value->description, 100, '...') }}</p>
-                                                        <input type="hidden" value="{{ $value->id }}" name="id">
-                                                        <input type="hidden" value="{{ $value->name }}" name="name">
-                                                        <input type="hidden" value="{{ $value->price }}" name="price">
-                                                        <input type="hidden" value="{{ $value->image }}" name="image">
-                                                        <input type="hidden" value="1" name="quantity">
+                                                      
+                                                            
                                                         <div class="d-flex justify-content-center">
-
                                                             <a href="{{ route('shop.add-to-cart', ['id' => $value->id]) }}"
                                                                 class="btn btn-success pull-right" role="button">Thêm vào
                                                                 giở hàng</a>
                                                         </div>
-
-
                                                     </div>
                                                 </div>
                                             </div>

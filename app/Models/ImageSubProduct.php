@@ -10,7 +10,6 @@ class ImageSubProduct extends Model
 {
     protected $table = 'image_sub_products';
     use HasFactory;
-    protected $guarded = [];
 
     public function updataSubProduct($data, $id)
     {

@@ -140,28 +140,20 @@
                             <a href="javascript:void(0)" class="open-searchbox"><i
                                     class="biolife-icon icon-search"></i></a>
                             <div class="mobile-search-content">
-                                <form action="#" class="form-search" name="mobile-seacrh" method="get">
+                                <form class="form-search" name="mobile-seacrh" method="get">
                                     <div class="form-group">
-                                        <div class="search"> <a href="#" class="btn-close"><span
-                                                    class="biolife-icon icon-close-menu"></span></a>
-                                            <input type="text" name="s" class="input-text" value=""
+                                        <div class="search">
+                                            <input type="text" name="s"
+                                                class="input-text input-search-ajax form-control" value=""
                                                 placeholder="Search here...">
-                                            <button type="submit" class="btn-submit">go</button>
+                                            <button type="submit" id="submit-search" class="btn-submit"><i
+                                                    class="fa-solid fa-magnifying-glass"></i></button>
                                         </div>
-
                                         <div class="search-ajax-result">
-                                            <div class="media">
-                                                <a class="pull-left" href="#">
-                                                  <img class="media-object" width="50" src="https://hinhanhdephd.com/wp-content/uploads/2019/07/hoa-sen-18-696x466.jpeg" alt="Image">
-                                                </a>
-                                                <div class="media-body">
-                                                  <h4 class="media-heading"><a href="">Media heading</a></h4>
-                                                  <!-- Nội dung khác ở đây -->
-                                                </div>
-                                              </div>
+                                            <!-- Kết quả tìm kiếm sẽ được hiển thị ở đây -->
                                         </div>
                                     </div>
-                                </form>
+                                </form>                               
                             </div>
 
                         </div>
@@ -276,20 +268,29 @@
                 </div>
                 <div class="col-lg-9 col-md-8 padding-top-2px">
                     <div class="header-search-bar layout-01">
-                        <form action="#" class="form-search" name="desktop-seacrh" method="get">
-                            <input type="text" name="s" class="input-text" value=""
-                                placeholder="Search here...">
-
-                            <button type="submit" class="btn-submit"><i
-                                    class="biolife-icon icon-search"></i></button>
+                        <form class="form-search" name="desktop-seacrh" method="get">
+                            <div class="form-group">
+                                <div class="search">
+                                    <input type="text" name="s"
+                                        class="input-text input-search-ajax form-control" value=""
+                                        placeholder="Search here...">
+                                    <button type="submit" id="submit-search" class="btn-submit"><i
+                                            class="fa-solid fa-magnifying-glass"></i></button>
+                                </div>
+                                <div class="search-ajax-result">
+                                    <!-- Kết quả tìm kiếm sẽ được hiển thị ở đây -->
+                                </div>
+                            </div>
                         </form>
                     </div>
+                    
                     <div class="live-info">
                         <p class="telephone"><i class="fa fa-phone" aria-hidden="true"></i><b
                                 class="phone-number">Hotline: 0854 64 8877 </b></p>
                         <p class="working-time">Làm việc từ 8h30 - 17h00 các ngày trong tuần.</p>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

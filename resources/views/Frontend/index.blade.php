@@ -142,7 +142,7 @@
                                                     <a href="{{ route('shop.chi-tiet-san-pham', ['id' => $item->id]) }}"
                                                         class="link-to-product">
                                                         <img src="{{ $item->image }}" alt="Vegetables" width="270"
-                                                            height="270" class="product-thumnail">
+                                                            height="270" class="product-thumnail product-thumnail-cover">
                                                     </a>
                                                     <a class="lookup btn_call_quickview" href="#"><i
                                                             class="biolife-icon icon-search"></i></a>

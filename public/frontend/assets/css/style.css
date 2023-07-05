@@ -2804,7 +2804,7 @@ body.open-mobile-search .header-area.layout-02 {
     line-height: 0;
     font-size: 20px;
     display: inline-block;
-    padding: 9px;
+    padding: 0px;
     width: 89px;
     text-align: center;
     position: absolute;
@@ -17093,3 +17093,50 @@ button:active {
     margin-right: 10px;
     object-fit: cover;
 }
+/* css form search */
+.search-ajax-result {
+    z-index: 100;
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-ajax-result .media {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .search-ajax-result .media img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 50%;
+  }
+  
+  .search-ajax-result .media h4 {
+    font-size: 16px;
+    margin: 0;
+  }
+  
+  .search-ajax-result .media a {
+    color: #333;
+    text-decoration: none;
+  }
+
+  /* css khung ảnh san pham */
+  .product-thumnail-cover {
+    width: 270px;  
+    height: 270px;
+    object-fit: cover; /* Hiển thị ảnh với tỉ lệ khung hình giống với khung ảnh */
+    object-position: center; /* Canh giữa ảnh trong khung */
+  }

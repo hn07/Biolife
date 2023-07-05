@@ -14,7 +14,7 @@
                                 <span>032 628 4270</span>
                             </p>
                         </div>
-                         
+
                     </section>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 md-margin-top-5px sm-margin-top-50px xs-margin-top-40px">
@@ -30,10 +30,10 @@
                                         <li><a href="#">Liên hệ chúng tôi</a></li>
                                         <li><a href="#">Sáng tạo</a></li>
                                         <li><a href="#">Chứng nhận</a></li>
-                                    </ul>                                       
+                                    </ul>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </section>
                 </div>
@@ -91,7 +91,7 @@
                     <div class="separator sm-margin-top-70px xs-margin-top-40px"></div>
                 </div>
                 <div class="col-lg-6 col-sm-6 col-xs-12">
-                    
+
                 </div>
                 <div class="col-lg-6 col-sm-6 col-xs-12">
                     <div class="payment-methods">
@@ -136,7 +136,7 @@
             </a>
         </div>
         <div class="mobile-block block-minicart">
-            <a class="link-to-cart" href="#">
+            <a class="link-to-cart" href="{{ route('shop.shopping-cart') }}">
                 <span class="fa fa-shopping-bag" aria-hidden="true"></span>
                 <span class="text">Cart</span>
             </a>
@@ -161,18 +161,19 @@
         <div class="glb-item my-account">
             <b class="title">My Account</b>
             <ul class="list">
-                <li class="list-item"><a href="#">Login/register</a></li>
-                <li class="list-item"><a href="#">Wishlist <span class="index">(8)</span></a></li>
-                <li class="list-item"><a href="#">Checkout</a></li>
+                @if (Session::has('loginId_Customer'))
+                    <li class="list-item"><a href="{{ route('checkout.index') }}">Thanh toán</a></li>
+                    <li class="list-item"><a href="{{ route('authentication.logout') }}">Đăng xuất</a></li>
+                @else
+                    <li class="list-item"><a href="{{ route('authentication.index') }}">Đăng nhập</a></li>
+                    <li class="list-item"><a href="{{ route('authentication.regestration') }}">Đăng ký</a></li>
+                @endif
             </ul>
         </div>
 
         <div class="glb-item languages">
             <b class="title">Language</b>
             <ul class="list inline">
-                <li class="list-item"><a href="#"><img
-                            src="{{ URL::asset('frontend/assets/images/languages/us.jpg') }}" alt="flag"
-                            width="24" height="18"></a></li>
                 <li class="list-item"><a href="#"><img
                             src="{{ URL::asset('frontend/assets/images/languages/vn.jpg') }}" alt="flag"
                             width="24" height="18"></a></li>
@@ -412,4 +413,41 @@
         });
     }
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.input-search-ajax').keyup(function() {
+            var keyword = $(this).val();
+            if (keyword.length > 0) {
+                $.ajax({
+                    url: "{{ route('search.ajax-search-product') }}?key=" +
+                    keyword, // Đường dẫn đến phương thức xử lý tìm kiếm
+                    type: 'GET',
+                    success: function(res) {
+                        $('.search-ajax-result').html(res);
+                        $('.search-ajax-result').show(500);
+                    }
+                });
+            } else {
+                $('.search-ajax-result').html('');
+                $('.search-ajax-result').hide();
+            }
+        });
+    });
 
+    function convertToSlug(Text) {
+        return Text.toLowerCase()
+            .replace(/[^\w ]+/g, "")
+            .replace(/ +/g, "-");
+    }
+
+    // $(document).on('click', '.search-ajax-result li', function() {
+    //     var value = $(this).text();
+    //     $('.input-text').val(value);
+    //     $('.search-ajax-result').hide();
+    // });
+
+    // $(document).on('click', '.search-ajax-result', function() {
+    //     $('.search-ajax-result').hide();
+    // });
+</script>

@@ -4,7 +4,7 @@
     <div class="container">
         <nav class="biolife-nav">
             <ul>
-                <li class="nav-item"><a href="index-2.html" class="permal-link">Home</a></li>
+                <li class="nav-item"><a href="{{ route('index') }}" class="permal-link">Home</a></li>
                 <li class="nav-item"><span class="current-page">About us</span></li>
             </ul>
         </nav>

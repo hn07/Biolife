@@ -323,6 +323,7 @@ class ProductsController extends Controller
         
         $imageSub = $productId->images;
 
+
         $categoryId = $productId->category_id;
         $categoryName = Categories::where('id', $categoryId)->get();
 

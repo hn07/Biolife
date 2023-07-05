@@ -33,6 +33,16 @@ class Products extends Model
         'updated_at',
     ];
 
+    public function scopeSearch($query){
+        if(request('key')){
+            $key = request('key');
+            $query = $query->where('name','like','%'.$key.'%');
+            
+        }
+        if(request('cart_id')){
+            $query = $query->where('id',request('cart_id'));
+        }
+    }
     function category()
     {
         return $this->belongsTo(Categories::class, 'category_id', 'id');

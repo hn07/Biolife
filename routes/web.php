@@ -13,6 +13,7 @@ use App\Http\Controllers\StatusNewsController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckOutController;
 use App\Http\Controllers\SupplierNewController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -74,6 +75,7 @@ Route::get('/contact', [UserController::class, 'contact']);
 
 
 // ----------------------------------------------------------------
+//San pham
 Route::prefix('shop')->name('shop.')->group(
     function () {
         //===== Liệt kê tất cả sản phẩm
@@ -98,7 +100,19 @@ Route::prefix('shop')->name('shop.')->group(
     }
 );
 
+//----------------------------------------------------------------
+//Search
+Route::prefix('search')->name('search.')->group(
+    function () {
+        Route::post('/', [SearchController::class, 'search'])->name('index');
+        Route::get('ajax-search-product', [SearchController::class, 'ajaxSearch'])->name('ajax-search-product');
+    }
+);
 
+
+
+
+//----------------------------------------------------------------
 //===== Thanh toán
 Route::prefix('checkout')->name('checkout.')->group(
     function () {
@@ -115,8 +129,9 @@ Route::prefix('order')->name('order.')->group(
     }
 );
 
-//----------------------------------------------------------------
 
+
+//----------------------------------------------------------------
 
 //----- Auth User Controller 
 Route::prefix('authentication')->name('authentication.')->group(
@@ -147,7 +162,7 @@ Route::prefix('authentication')->name('authentication.')->group(
         //===== Đổi mật khẩu
         Route::get('/change-password', [AuthControllerUser::class, 'changePassword'])->name('change-password');
         Route::post('/change-password', [AuthControllerUser::class, 'changePasswordPost'])->name('change-password-post');
-      
+
 
         //===== Cập nhật thông tin
         Route::get('/update-info', [AuthControllerUser::class, 'updateCustomer'])->name('update-info')->middleware('isLoggedInCustomer');
@@ -163,6 +178,7 @@ Route::prefix('authentication')->name('authentication.')->group(
     }
 );
 
+//----------------------------------------------------------------
 
 //----- ADMIN
 Route::prefix('admin')->name('admin.')->group(
