@@ -16,8 +16,8 @@
             <div class="top-bar left">
                 <ul class="horizontal-menu">
                     <li><a href="{{ route('index') }}"><i class="fa fa-envelope"
-                                aria-hidden="true"></i>Organic@company.com</a></li>
-                    <li><a href="{{ route('index') }}">Miễn phí vận chuyển cho đơn hàng từ 1.000.000 vnđ</a></li>
+                                aria-hidden="true"></i>nguyennham2580@gmail.com</a></li>
+                    <li><a href="{{ route('index') }}">Miễn phí vận chuyển trong khu vực Cần Thơ</a></li>
                 </ul>
             </div>
             <div class="top-bar right display-6">
@@ -103,17 +103,17 @@
                                                         <li>
                                                             <div class="block-post-item">
                                                                 <div class="thumb"><a
-                                                                        href="{{ route('blog-post', ['id' => $news->id]) }}">
+                                                                        href="{{ route('blog-post', ['id' => $news->id, 'slug' => Str::slug($news->title)]) }}">
                                                                         <img src="{{ $news->image_news }}"
                                                                             width="100" height="73"
                                                                             alt=""></a></div>
                                                                 <div class="left-info">
                                                                     <h4 class="post-name"><a
-                                                                            href="{{ route('blog-post', ['id' => $news->id]) }}">
+                                                                            href="{{ route('blog-post', ['id' => $news->id, 'slug' => Str::slug($news->title)]) }}">
                                                                             {{ Str::limit($news->title, 100, '...') }}</a>
                                                                     </h4>
                                                                     <h5><a
-                                                                            href="{{ route('blog-post', ['id' => $news->id]) }}">
+                                                                            href="{{ route('blog-post', ['id' => $news->id, 'slug' => Str::slug($news->title)]) }}">
                                                                             Tác giả:
                                                                             {{ Str::limit($news->author, 100, '...') }}</a>
                                                                     </h5>

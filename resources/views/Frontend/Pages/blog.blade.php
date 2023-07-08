@@ -13,14 +13,14 @@
                     <li class="post-elem">
                         <div class="post-item style-left-info">
                             <div class="thumbnail">
-                                <a href="{{ route('blog-post', ['id' => $news->id]) }}" class="link-to-post"><img src="{{ $news->image_news }}" width="370" height="270" alt=""></a>
+                                <a href="{{ route('blog-post', ['id' => $news->id, 'slug' => Str::slug($news->title)]) }}" class="link-to-post"><img src="{{ $news->image_news }}" width="370" height="270" alt=""></a>
                             </div>
                             <div class="post-content">
-                                <h4 class="post-name"><a href="{{ route('blog-post', ['id' => $news->id]) }}" class="linktopost">{{ $news->title }}</a></h4>
+                                <h4 class="post-name"><a href="{{ route('blog-post', ['id' => $news->id, 'slug' => Str::slug($news->title)]) }}" class="linktopost">{{ $news->title }}</a></h4>
                                 <p class="post-archive"><b class="post-cat">ORGANIC</b><span class="post-date"> / {{ $news->updated_at }}</span><span class="author">Posted By: {{ $news->author }}</span></p>
                                 <p class="excerpt">{{ Str::limit($news->content,100,'...') }}</p>
                                 <div class="group-buttons">
-                                    <a href="{{ route('blog-post', ['id' => $news->id]) }} " class="btn readmore">read more</a>
+                                    <a href="{{ route('blog-post', ['id' => $news->id, 'slug' => Str::slug($news->title)]) }} " class="btn readmore">read more</a>
                                     <a href="#" class="btn count-number liked"><i class="biolife-icon icon-heart-1"></i><span class="number">20</span></a>
                                     <a href="#" class="btn count-number commented"><i class="biolife-icon icon-conversation"></i><span class="number">06</span></a>
                                 </div>

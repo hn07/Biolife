@@ -412,6 +412,7 @@
             }
         });
     }
+    
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
@@ -435,11 +436,6 @@
         });
     });
 
-    function convertToSlug(Text) {
-        return Text.toLowerCase()
-            .replace(/[^\w ]+/g, "")
-            .replace(/ +/g, "-");
-    }
 
     // $(document).on('click', '.search-ajax-result li', function() {
     //     var value = $(this).text();
@@ -451,3 +447,6 @@
     //     $('.search-ajax-result').hide();
     // });
 </script>
+
+
+

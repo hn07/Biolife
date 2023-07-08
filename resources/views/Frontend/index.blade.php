@@ -309,7 +309,7 @@
                             <li>
                                 <div class="post-item effect-01 style-bottom-info layout-02">
                                     <div class="thumbnail">
-                                        <a href="{{ route('blog-post', ['id' => $item->id]) }}" class="link-to-post"><img
+                                        <a href="{{ route('blog-post', ['id' => $item->id, 'slug' => Str::slug($item->title)]) }}" class="link-to-post"><img
                                                 src="{{ $item->image_news }}" width="370"
                                                 height="270" alt=""></a>
                                         <div class="post-date">
@@ -342,7 +342,7 @@
                                         </div>
                                         <p class="excerpt">{{ Str::limit($item->content,100,'...') }}</p>
                                         <div class="group-buttons">
-                                            <a href="{{ route('blog-post', ['id' => $item->id]) }}" class="btn readmore">continue reading</a>
+                                            <a href="{{ route('blog-post', ['id' => $item->id, 'slug' => Str::slug($item->title)]) }}" class="btn readmore">continue reading</a>
                                         </div>
                                     </div>
                                 </div>

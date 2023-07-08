@@ -14,6 +14,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckOutController;
 use App\Http\Controllers\SupplierNewController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -64,8 +65,17 @@ Route::prefix('/category')->name('category.')->group(function () {
 //====== Trang tin tức
 Route::get('/blog', [NewsCustomerController::class, 'blog']);
 Route::prefix('/blogs')->group(function () {
-    Route::get('/blog-post/{id}', [NewsCustomerController::class, 'blog_post'])->name('blog-post');
+    Route::get('/blog-post/{id}-{slug}', [NewsCustomerController::class, 'blog_post'])->name('blog-post');
 });
+//----------------------------------------------------------------
+//===== Bình luận
+Route::prefix('comment')->name('comment.')->group(
+    function () {
+        Route::POST('/add-comment/{id}', [CommentController::class, 'addComment'])->name('add-comment');
+        Route::GET('/list-comment', [CommentController::class, 'listComment'])->name('list-comment');
+    }
+);
+
 
 
 //====== Trang liên hệ

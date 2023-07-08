@@ -36,6 +36,9 @@ class News extends Model
         return $this->belongsTo(Categorynews::class, 'category_news', 'id');
         //foreign_key //local_key
     }
+    public function comments(){
+        return $this->hasMany(Comment::class,'news_id','id')->orderBy('id', 'DESC');
+    }
     public function delete_all_news(){
         $deleted = DB::table('news')->delete();
         return $deleted;

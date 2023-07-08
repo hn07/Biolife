@@ -7,7 +7,7 @@ use App\Models\Admin;
 use App\Models\Categories;
 use App\Models\Products;
 use App\Models\News;
-use App\Models\Categorynews;
+use App\Models\Customer;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Str;
 use App\Models\StatusNews;
@@ -33,9 +33,16 @@ class NewsCustomerController extends Controller
     }
     public function blog_post($id)
     {
+        $CustomerId ='';
         $carts = Cart::content();
         $news = News::find($id);
+        if (Session::has('loginId_Customer')){
+            $id = Session::get('loginId_Customer');
+            $CustomerId = Customer::find($id);
+        }
+        $newsall = News::all();
+        
+        return view('Frontend.Pages.blog-post',compact('carts','news','newsall','CustomerId'));
 
-        return view('Frontend.Pages.blog-post',compact('carts','news',));
     }
 }
