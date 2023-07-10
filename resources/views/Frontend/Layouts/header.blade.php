@@ -33,8 +33,8 @@
 
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="userDropdown">
-                            <li><a class="dropdown-item" href="{{ route('authentication.update-info') }}">Thông tin cá
-                                    nhân</a></li>
+                            {{-- <li><a class="dropdown-item" href="{{ route('authentication.update-info') }}">Thông tin cá
+                                    nhân</a></li> --}}
                             <li><a class="dropdown-item" href="{{ route('authentication.change-password') }}">Đổi mật
                                     khẩu</a></li>
                             <li>

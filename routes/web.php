@@ -16,6 +16,8 @@ use App\Http\Controllers\SupplierNewController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\App;
+
 
 
 // ----- USER Bản demo
@@ -76,10 +78,14 @@ Route::prefix('comment')->name('comment.')->group(
     }
 );
 
-
-
 //====== Trang liên hệ
 Route::get('/contact', [UserController::class, 'contact']);
+
+//====== Errors
+Route::get('/404', function () {
+    App::abort(404, 'Đã có lỗi xãy ra!');
+    return view('Frontend.Errors.404');
+})->name('404');
 
 
 

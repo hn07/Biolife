@@ -65,7 +65,8 @@ class CartController extends Controller
         $totalPrice = Cart::subtotal();
         $totalDiscount = Cart::discount();
 
-        return view('Frontend.Pages.shopping-cart', compact('carts', 'total', 'totalQty', 'totalPrice', 'totalDiscount'));
+        $productList = Products::all();
+        return view('Frontend.Pages.shopping-cart', compact('carts', 'total', 'totalQty', 'totalPrice', 'totalDiscount','productList'));
     }
    
     public function delete($id){

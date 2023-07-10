@@ -42,7 +42,7 @@ class Comment extends Model
     {
         $comment = DB::table('comments')
             ->join('customers', 'comments.customer_id', '=', 'customers.id')
-            ->select('comments.*', 'customers.name')
+            ->select('comments.*', 'customers.username')
             ->where('news_id', $id)
             ->where('reply_id', 0)
             ->orderBy('comments.id', 'DESC')

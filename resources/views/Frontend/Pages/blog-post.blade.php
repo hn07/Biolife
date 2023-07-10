@@ -139,11 +139,9 @@
                             <h4 class="wgt-title">Categories</h4>
                             <div class="wgt-content">
                                 <ul class="cat-list">
-                                    <li class="cat-list-item"><a href="#" class="cat-link">Beauty (30)</a></li>
-                                    <li class="cat-list-item"><a href="#" class="cat-link">Fashion (50)</a></li>
-                                    <li class="cat-list-item"><a href="#" class="cat-link">Food (10)</a></li>
-                                    <li class="cat-list-item"><a href="#" class="cat-link">Life Style (60)</a></li>
-                                    <li class="cat-list-item"><a href="#" class="cat-link">Travel (10)</a></li>
+                                    @foreach ($categorys as $category)                                        
+                                    <li class="cat-list-item"><a href="{{ route('category.category-get', ['id' => $category->id]) }}" class="cat-link">{{ $category->name_category }}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -153,51 +151,21 @@
                             <h4 class="wgt-title">Recent post</h4>
                             <div class="wgt-content">
                                 <ul class="posts">
+                                    @foreach ($newsAll  as $news)
                                     <li>
                                         <div class="wgt-post-item">
                                             <div class="thumb">
-                                                <a href="#"><img
-                                                        src="{{ asset('frontend/assets/images/blogpost/post-wgt-01.jpg') }}"
+                                                <a href="{{ route('blog-post', ['id' => $news->id, 'slug' => Str::slug($news->title)]) }}"><img
+                                                        src="{{ $news->image_news }}"
                                                         width="80" height="58" alt=""></a>
                                             </div>
                                             <div class="detail">
-                                                <h4 class="post-name"><a href="#">Ashwagandha: The #1 Herb in the
-                                                        World</a></h4>
-                                                <p class="post-archive">22 Jan 2019<span class="comment">15
-                                                        Comments</span></p>
+                                                <h4 class="post-name"><a href="{{ route('blog-post', ['id' => $news->id, 'slug' => Str::slug($news->title)]) }}">{{ $news->title }}</a></h4>
+                                                <p class="post-archive">{{ $news->updated_at }}</p>
                                             </div>
                                         </div>
                                     </li>
-                                    <li>
-                                        <div class="wgt-post-item">
-                                            <div class="thumb">
-                                                <a href="#"><img
-                                                        src="{{ asset('frontend/assets/images/blogpost/post-wgt-02.jpg') }}"
-                                                        width="80" height="58" alt=""></a>
-                                            </div>
-                                            <div class="detail">
-                                                <h4 class="post-name"><a href="#">Ashwagandha: The #1 Herb in the
-                                                        World</a></h4>
-                                                <p class="post-archive">06 Apr 2019<span class="comment">06
-                                                        Comments</span></p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="wgt-post-item">
-                                            <div class="thumb">
-                                                <a href="#"><img
-                                                        src="{{ asset('frontend/assets/images/blogpost/post-wgt-03.jpg') }}"
-                                                        width="80" height="58" alt=""></a>
-                                            </div>
-                                            <div class="detail">
-                                                <h4 class="post-name"><a href="#">Ashwagandha: The #1 Herb in the
-                                                        World</a></h4>
-                                                <p class="post-archive">12 May 2019<span class="comment">08
-                                                        Comments</span></p>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    @endforeach                                    
                                 </ul>
                             </div>
                         </div>
@@ -286,11 +254,11 @@
     <script>
         var csrf = '{{ csrf_token() }}';
         let commentnUrl = "{{ route('comment.add-comment', ['id' => $news->id]) }}";
-        
         $('#btn-comments').click(function(ev) {
             ev.preventDefault();
             var content = $('#txt-comment-ath-3364').val();
-          
+            let commentnUrl = "{{ route('comment.add-comment', ['id' => $news->id]) }}";
+            // console.log(commentnUrl);
 
             $.ajax({
                 url: commentnUrl,
@@ -321,20 +289,22 @@
                 var comment_reply_id = '#txt-comment-ath-3364-' + id;
                 var form_reply = '.post-comment-' + id;
                 var contentReply = $(comment_reply_id).val();
-                console.log(contentReply);
+                console.log(form_reply);
                 $('.postComment').slideUp();
                 $(form_reply).slideDown();
             }
         );
 
-        //hiển thị bình luận lv2
+        //tra lời bình luận
         $(document).on('click',
             '#btn-comments-reply',
             function(ev) {
                 ev.preventDefault();
                 var id = $(this).data('id');
                 var comment_reply_id = '#txt-comment-ath-3364-' + id;
+                var form_reply = '.post-comment-' + id;
                 var contentReply = $(comment_reply_id).val();
+
 
                 $.ajax({
                     url: commentnUrl,
@@ -349,9 +319,9 @@
                             checkComment();
 
                         } else {
-                            $('#txt-comment-ath-3364').val('');
+                            $('.form-comment-reply').val('');
                             $('#comment_list').html(responsed);
-                         
+
                         }
                     }
                 });

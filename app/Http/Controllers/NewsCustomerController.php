@@ -36,13 +36,15 @@ class NewsCustomerController extends Controller
         $CustomerId ='';
         $carts = Cart::content();
         $news = News::find($id);
+        $categorys = Categories::all();
+
         if (Session::has('loginId_Customer')){
             $id = Session::get('loginId_Customer');
             $CustomerId = Customer::find($id);
         }
         $newsall = News::all();
         
-        return view('Frontend.Pages.blog-post',compact('carts','news','newsall','CustomerId'));
+        return view('Frontend.Pages.blog-post',compact('carts','news','newsall','CustomerId','categorys'));
 
     }
 }

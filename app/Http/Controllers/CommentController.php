@@ -41,11 +41,14 @@ class CommentController extends Controller
                 'customer_id' => $idCustomer,
                 'content' => $request->content,
                 'news_id' => $id,
-                'reply_id' => $request->id ? $request->id : 0,
+                'reply_id' => $request->reply_id ? $request->reply_id : 0,
             ];
             if ($comment = Comment::create($data)) {
-                $comment = Comment::where('news_id', $id)->where('reply_id', 0)->orderBy('updated_at', 'DESC')->get();
-                
+                // $comment = Comment::where('news_id', $id)->where('reply_id', 0)->orderBy('updated_at', 'DESC')->get();
+                $comment = Comment::where(['news_id' => $id, 'reply_id' => 0])
+                    ->orderBy('updated_at', 'DESC')
+                    ->get();
+
                 return view('Frontend.Pages.list-comment', compact('comment'));
             }
         }
@@ -57,5 +60,5 @@ class CommentController extends Controller
     //     $comment = Comment::all();
     //     return view('Frontend.Pages.list-comment', compact('comment'));
     // }
-  
+
 }
